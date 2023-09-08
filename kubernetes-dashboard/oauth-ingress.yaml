@@ -1,0 +1,21 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oauth2-proxy
+  namespace: kubernetes-dashboard
+  annotations:
+    cert-manager.io/cluster-issuer: "cf-issuer"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dashboard.k8s.furst.blue
+    http:
+      paths:
+      - path: /oauth2
+        pathType: Prefix
+        backend:
+          service:
+            name: oauth-proxy-oauth2-proxy
+            port:
+              number: 4180

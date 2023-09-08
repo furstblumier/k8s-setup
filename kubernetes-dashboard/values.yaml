@@ -92,7 +92,17 @@ app:
       # - cluster - adds 'cert-manager.io/cluster-issuer'
       scope: cluster
     labels: {}
-    annotations: {}
+    annotations:
+      nginx.ingress.kubernetes.io/auth-response-headers: >-
+        X-Auth-Request-Email,X-Auth-Request-Preferred-,X-Auth-Request-Access-Token,
+        X-Auth-Request-Roles,X-Auth-Request-User,X-Auth-Request-Groups,X-Forwarded-Groups,
+        Authorization
+      nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+      ingress.kubernetes.io/configuration-snippet: |
+        auth_request_set $token $upstream_http_authorization;
+        proxy_set_header Authorization $token;
+      # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     paths:
       web: /
       api: /api
@@ -116,7 +126,8 @@ api:
     # Full list of arguments: https://github.com/kubernetes/dashboard/blob/master/docs/common/arguments.md
     # args:
     # - --system-banner="Welcome to the Kubernetes Dashboard"
-    args: []
+    args: 
+      - --api-log-level="DEBUG"
     # Additional container environment variables
     # env:
     # - name: SOME_VAR
