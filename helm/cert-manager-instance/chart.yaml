@@ -1,0 +1,5 @@
+chart:
+  name: cert-manager
+  repoURL: https://charts.jetstack.io
+  targetRevision: v1.15.3
+  namespace: cert-manager
