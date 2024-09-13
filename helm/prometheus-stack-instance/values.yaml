@@ -3824,7 +3824,7 @@ prometheus:
     ##
       volumeClaimTemplate:
         spec:
-          # storageClassName: freenas-iscsi-csi
+          storageClassName: freenas-iscsi-csi
           # accessModes: ["ReadWriteOnce"]
           resources:
             requests:
