@@ -1,0 +1,5 @@
+chart:
+  name: navidrome
+  repoURL: https://djjudas21.github.io/charts/
+  targetRevision: "6.6.11"
+  namespace: navidrome 
