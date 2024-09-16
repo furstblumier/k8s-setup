@@ -83,6 +83,7 @@ ingress:
 persistence:
   config:
     type: persistentVolumeClaim
+    storageClass: freenas-iscsi-csi
     accessMode: ReadWriteOnce
     size: 2Gi
     globalMounts:
