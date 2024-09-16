@@ -48,16 +48,17 @@ service:
         port: 4533
 
 serviceMonitor:
-  # -- Enables or disables the serviceMonitor.
-  enabled: true
-  # -- Configures the endpoints for the serviceMonitor.
-  # @default -- See values.yaml
-  endpoints:
-    - port: http
-      scheme: http
-      path: /metrics
-      interval: 1m
-      scrapeTimeout: 10s
+  main:
+    # -- Enables or disables the serviceMonitor.
+    enabled: true
+    # -- Configures the endpoints for the serviceMonitor.
+    # @default -- See values.yaml
+    endpoints:
+      - port: http
+        scheme: http
+        path: /metrics
+        interval: 1m
+        scrapeTimeout: 10s
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -68,6 +69,10 @@ ingress:
       cert-manager.io/cluster-issuer: cf-issuer
     hosts:
       - host: music.magi.furst.blue
+        paths:
+          - # -- Path.  Helm template can be passed.
+            path: /
+            pathType: Prefix
     tls:
       - hosts:
           - music.magi.furst.blue
