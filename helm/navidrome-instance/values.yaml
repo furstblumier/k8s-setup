@@ -51,7 +51,7 @@ serviceMonitor:
     enabled: true
     # -- Configures the endpoints for the serviceMonitor.
     # @default -- See values.yaml
-    serviceName: main
+    serviceName: navidrome-instance
     endpoints:
       - port: http
         scheme: http
@@ -73,7 +73,7 @@ ingress:
             path: /
             pathType: Prefix
             service:
-              name: main
+              name: navidrome-instance
               port: 8080
     tls:
       - hosts:
