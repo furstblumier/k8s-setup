@@ -1,5 +1,5 @@
 chart:
   name: app-template
-  repoURL: oci://ghcr.io/bjw-s/helm/
+  repoURL: https://bjw-s.github.io/helm-charts
   targetRevision: "3.4.0"
   namespace: navidrome 
