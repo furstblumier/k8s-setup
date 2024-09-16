@@ -73,14 +73,24 @@ ingress:
             path: /
             pathType: Prefix
             service:
-              name: navidrome-instance
+              identifier: main
               port: 8080
     tls:
       - hosts:
           - music.magi.furst.blue
         secretName: navidrome-tls
 
-# persistence:
-#   config:
+persistence:
+  config:
+    type: persistentVolumeClaim
+    size: 1Gi
+    globalMounts:
+      - path: /config
 
-#   media:
+  media:
+    type: nfs
+    server: nas.furst.blue
+    path: /mnt/pool1/music
+    globalMounts:
+      - path: /media
+        readOnly: true
