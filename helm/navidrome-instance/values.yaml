@@ -1,36 +1,46 @@
-#
-# This chart inherits from a common library chart. You can check the default values/options here:
-# https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
-#
-
-image:
-  # -- image repository
-  repository: deluan/navidrome
-  # -- image tag
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-
-# -- environment variables. See [navidrome docs](https://www.navidrome.org/docs/usage/configuration-options/#environment-variables) for more details.
-# @default -- See below
-env:
-  # -- Set the container timezone
-  TZ: Europe/Berlin
-  # -- Log level. Useful for troubleshooting
-  ND_LOGLEVEL: info
-  # -- How long Navidrome will wait before closing web ui idle sessions
-  ND_SESSIONTIMEOUT: 24h
-  # -- Enables transcoding configuration in the UI
-  ND_ENABLETRANSCODINGCONFIG: "true"
-  # -- Folder where your music library is stored
-  ND_MUSICFOLDER: /music
-  # -- Enable extra endpoint with Prometheus metrics
-  ND_PROMETHEUS_ENABLED: "false"
-  # -- Enable sharing
-  ND_ENABLESHARING: "false"
-
-# -- Configures service settings for the chart.
-# @default -- See values.yaml
+controllers:
+  main:
+    pod:
+      # securityContext:
+      #   runAsUser: 2000
+      #   runAsGroup: 2000
+      #   runAsNonRoot: true
+      #   fsGroup: 2000
+      #   fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: ghcr.io/navidrome/navidrome
+          tag: 0.52.5
+        env:
+          TZ: Europe/Berlin
+          ND_AUTHREQUESTLIMIT: 0
+          ND_DATAFOLDER: /config
+          ND_ENABLEGRAVATAR: true
+          ND_ENABLESHARING: true
+          ND_LOGLEVEL: info
+          ND_MUSICFOLDER: /media
+          ND_PORT: 8080
+          ND_PROMETHEUS_ENABLED: true
+          ND_SCANSCHEDULE: "@every 1h"
+        envFrom:
+          - secretRef:
+              name: navidrome-secret
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /ping
+                port: 4533
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+          startup:
+            enabled: false
 service:
   main:
     ports:
@@ -61,14 +71,15 @@ ingress:
       - hosts:
           - music.magi.furst.blue
         secretName: navidrome-tls
-        
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: "music.magi.furst.blue"
 
-# -- Configure persistence settings for the chart under this key.
-# @default -- See values.yaml
-persistence:
-  config:
-    enabled: false
-    mountPath: /data
-  music:
-    enabled: false
-    mountPath: /music
+    persistence:
+      config:
+        enabled: false
+
+      media:
+        enabled: false

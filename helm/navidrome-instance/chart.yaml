@@ -1,5 +1,5 @@
 chart:
-  name: navidrome
-  repoURL: https://djjudas21.github.io/charts/
-  targetRevision: "6.6.11"
+  name: app-template
+  repoURL: oci://ghcr.io/bjw-s/helm/
+  targetRevision: "3.4.0"
   namespace: navidrome 
