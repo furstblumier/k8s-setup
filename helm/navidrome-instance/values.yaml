@@ -23,9 +23,6 @@ controllers:
           ND_PORT: 8080
           ND_PROMETHEUS_ENABLED: true
           ND_SCANSCHEDULE: "@every 1h"
-        envFrom:
-          - secretRef:
-              name: navidrome-secret
         probes:
           liveness: &probes
             enabled: true
