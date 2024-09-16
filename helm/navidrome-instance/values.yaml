@@ -54,6 +54,7 @@ serviceMonitor:
     enabled: true
     # -- Configures the endpoints for the serviceMonitor.
     # @default -- See values.yaml
+    serviceName: main
     endpoints:
       - port: http
         scheme: http
@@ -74,6 +75,8 @@ ingress:
           - # -- Path.  Helm template can be passed.
             path: /
             pathType: Prefix
+            service:
+              name: main
     tls:
       - hosts:
           - music.magi.furst.blue
