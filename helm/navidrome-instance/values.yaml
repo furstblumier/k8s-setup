@@ -33,7 +33,7 @@ controllers:
             spec:
               httpGet:
                 path: /ping
-                port: 4533
+                port: 8080
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
@@ -46,7 +46,7 @@ service:
     controller: main
     ports:
       http:
-        port: 4533
+        port: 8080
 
 serviceMonitor:
   main:
@@ -77,7 +77,7 @@ ingress:
             pathType: Prefix
             service:
               name: main
-              port: 4533
+              port: 8080
     tls:
       - hosts:
           - music.magi.furst.blue
