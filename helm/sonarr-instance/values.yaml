@@ -10,29 +10,20 @@ controllers:
     containers:
       main:
         image:
-          repository: ghcr.io/navidrome/navidrome
-          tag: 0.53.3
+          repository: lscr.io/linuxserver/sonarr
+          tag: latest
         env:
+          PUID: 1000
+          PGID: 1000
           TZ: Europe/Berlin
-          ND_AUTHREQUESTLIMIT: 0
-          ND_DATAFOLDER: /config
-          ND_ENABLEGRAVATAR: true
-          ND_ENABLESHARING: true
-          ND_LOGLEVEL: info
-          ND_MUSICFOLDER: /media
-          ND_PORT: 8080
-          ND_PROMETHEUS_ENABLED: true
-          ND_SCANSCHEDULE: "@every 1h"
-          ND_LASTFM_APIKEY: "d3fec012063079f858124f3b40a72a84"
-          ND_LASTFM_SECRET: "9594cc4606cc9b2a4acc2e3d4955cd17"
         probes:
           liveness: &probes
             enabled: true
             custom: true
             spec:
               httpGet:
-                path: /ping
-                port: 8080
+                path: /
+                port: 8989
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
@@ -45,7 +36,7 @@ service:
     controller: main
     ports:
       http:
-        port: 8080
+        port: 8989
 
 serviceMonitor:
   main:
@@ -53,7 +44,7 @@ serviceMonitor:
     enabled: true
     # -- Configures the endpoints for the serviceMonitor.
     # @default -- See values.yaml
-    serviceName: navidrome-instance
+    serviceName: sonarr
     endpoints:
       - port: http
         scheme: http
@@ -69,32 +60,32 @@ ingress:
     annotations:
       cert-manager.io/cluster-issuer: cf-issuer
     hosts:
-      - host: music.magi.furst.blue
+      - host: sonarr.magi.furst.blue
         paths:
           - # -- Path.  Helm template can be passed.
             path: /
             pathType: Prefix
             service:
               identifier: main
-              port: 8080
+              port: 8989
     tls:
       - hosts:
-          - music.magi.furst.blue
-        secretName: navidrome-tls
+          - sonarr.magi.furst.blue
+        secretName: sonarr-tls
 
 persistence:
   config:
     type: persistentVolumeClaim
     storageClass: freenas-iscsi-csi
     accessMode: ReadWriteOnce
-    size: 2Gi
+    size: 1Gi
     globalMounts:
       - path: /config
 
   media:
     type: nfs
     server: nas.furst.blue
-    path: /mnt/pool1/media/music
+    path: /mnt/pool1/media
     globalMounts:
       - path: /media
         readOnly: true
