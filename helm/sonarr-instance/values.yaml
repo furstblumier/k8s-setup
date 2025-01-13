@@ -21,9 +21,8 @@ controllers:
             enabled: true
             custom: true
             spec:
-              httpGet:
-                path: /api
-                port: 8989
+              tcpSocket:
+                port: http
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
