@@ -22,7 +22,7 @@ controllers:
             custom: true
             spec:
               tcpSocket:
-                port: http
+                port: 8989
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
