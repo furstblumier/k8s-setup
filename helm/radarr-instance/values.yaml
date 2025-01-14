@@ -1,0 +1,89 @@
+controllers:
+  main:
+    pod: {}
+      # securityContext:
+      #   runAsUser: 2000
+      #   runAsGroup: 2000
+      #   runAsNonRoot: true
+      #   fsGroup: 2000
+      #   fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: lscr.io/linuxserver/radarr
+          tag: latest
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Europe/Berlin
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              tcpSocket:
+                port: 7878
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+          startup:
+            enabled: false
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 7878
+
+serviceMonitor:
+  main:
+    # -- Enables or disables the serviceMonitor.
+    enabled: true
+    # -- Configures the endpoints for the serviceMonitor.
+    # @default -- See values.yaml
+    serviceName: radarr
+    endpoints:
+      - port: http
+        scheme: http
+        path: /metrics
+        interval: 1m
+        scrapeTimeout: 10s
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    hosts:
+      - host: radarr.magi.furst.blue
+        paths:
+          - # -- Path.  Helm template can be passed.
+            path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 7878
+    tls:
+      - hosts:
+          - radarr.magi.furst.blue
+        secretName: radarr-tls
+
+persistence:
+  config:
+    type: persistentVolumeClaim
+    storageClass: freenas-iscsi-csi
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    globalMounts:
+      - path: /config
+
+  media:
+    type: nfs
+    server: nas.furst.blue
+    path: /mnt/pool1/media
+    globalMounts:
+      - path: /media
