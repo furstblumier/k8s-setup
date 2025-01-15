@@ -19,7 +19,7 @@ controllers:
           ND_ENABLEGRAVATAR: true
           ND_ENABLESHARING: true
           ND_LOGLEVEL: info
-          ND_MUSICFOLDER: /media
+          ND_MUSICFOLDER: /media/music
           ND_PORT: 8080
           ND_PROMETHEUS_ENABLED: true
           ND_SCANSCHEDULE: "@every 1h"
@@ -94,7 +94,7 @@ persistence:
   media:
     type: nfs
     server: nas.furst.blue
-    path: /mnt/pool1/media/music
+    path: /mnt/pool1/media
     globalMounts:
       - path: /media
         readOnly: true

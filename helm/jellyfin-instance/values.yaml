@@ -88,18 +88,10 @@ persistence:
     globalMounts:
       - path: /config
 
-  tv:
+  media:
     type: nfs
     server: nas.furst.blue
-    path: /mnt/pool1/media/tv
+    path: /mnt/pool1/media
     globalMounts:
-      - path: /data/tv
-        readOnly: true
-
-  movies:
-    type: nfs
-    server: nas.furst.blue
-    path: /mnt/pool1/media/movies
-    globalMounts:
-      - path: /data/movies
+      - path: /data
         readOnly: true
