@@ -3,3 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: node-feature-discovery
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
