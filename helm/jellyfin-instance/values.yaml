@@ -34,8 +34,8 @@ controllers:
           startup:
             enabled: false
         resources:
-          requests:
-            gpu.intel.com/i915: 100m
+          limit:
+            gpu.intel.com/i915: 1
 
 service:
   main:
