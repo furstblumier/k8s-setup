@@ -1,0 +1,39 @@
+controllers:
+  main:
+    pod: {}
+      # securityContext:
+      #   runAsUser: 2000
+      #   runAsGroup: 2000
+      #   runAsNonRoot: true
+      #   fsGroup: 2000
+      #   fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: ghcr.io/hotio/unpackerr
+          tag: latest
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: Europe/Berlin
+          UN_SONARR_0_URL: https://sonarr.magi.furst.blue
+          UN_SONARR_0_API_KEY: fe55ca100cae469da47da1400c9dae9e
+          UN_SONARR_0_PATHS_0: "/media/downloads"
+          UN_RADARR_0_URL: https://radarr.magi.furst.blue
+          UN_RADARR_0_API_KEY: 5edfa0ac433c40aaae4056f61dc86766
+          UN_RADARR_0_PATHS_0: "/media/downloads"
+persistence:
+  config:
+    type: persistentVolumeClaim
+    storageClass: freenas-iscsi-csi
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    globalMounts:
+      - path: /config
+
+  media:
+    type: nfs
+    server: nas.furst.blue
+    path: /mnt/pool1/media
+    globalMounts:
+      - path: /media
