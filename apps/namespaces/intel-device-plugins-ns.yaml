@@ -3,3 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: intel-device-plugins
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
