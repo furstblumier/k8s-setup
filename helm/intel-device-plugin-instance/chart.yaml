@@ -1,0 +1,5 @@
+chart:
+  name: intel-device-plugins-operator
+  repoURL: https://intel.github.io/helm-charts/
+  targetRevision: v1.15.3
+  namespace: intel-device-plugins
