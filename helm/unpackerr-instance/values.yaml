@@ -16,12 +16,15 @@ controllers:
           PUID: 1000
           PGID: 1000
           TZ: Europe/Berlin
-          UN_SONARR_0_URL: https://sonarr.magi.furst.blue
+          UN_SONARR_0_URL: http://sonarr-instance.sonarr
           UN_SONARR_0_API_KEY: fe55ca100cae469da47da1400c9dae9e
           UN_SONARR_0_PATHS_0: "/media/downloads"
-          UN_RADARR_0_URL: https://radarr.magi.furst.blue
+          UN_RADARR_0_URL: http://radarr-instance.radarr
           UN_RADARR_0_API_KEY: 5edfa0ac433c40aaae4056f61dc86766
           UN_RADARR_0_PATHS_0: "/media/downloads"
+          UN_LIDARR_0_URL: http://lidarr-instance.lidarr
+          UN_LIDARR_0_API_KEY: b584dfc1c62e445fa5b79058dcaa18a4
+          UN_LIDARR_0_PATHS_0: "/media/downloads"
 persistence:
   config:
     type: persistentVolumeClaim
