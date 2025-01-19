@@ -10,7 +10,7 @@ controllers:
     containers:
       main:
         image:
-          repository: fallenbagel/jellyseerr:latest
+          repository: fallenbagel/jellyseerr
           tag: latest
         env:
           TZ: Europe/Berlin
