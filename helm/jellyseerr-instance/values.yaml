@@ -1,9 +1,6 @@
 controllers:
   main:
-    pod:
-      nodeSelector:
-        role: media
-      
+    pod: {}
       # securityContext:
       #   runAsUser: 2000
       #   runAsGroup: 2000
@@ -13,11 +10,9 @@ controllers:
     containers:
       main:
         image:
-          repository: lscr.io/linuxserver/jellyfin
+          repository: fallenbagel/jellyseerr:latest
           tag: latest
         env:
-          PUID: 1000
-          PGID: 1000
           TZ: Europe/Berlin
         probes:
           liveness: &probes
@@ -25,7 +20,7 @@ controllers:
             custom: true
             spec:
               tcpSocket:
-                port: 8096
+                port: 5055
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
@@ -33,16 +28,12 @@ controllers:
           readiness: *probes
           startup:
             enabled: false
-        resources:
-          limits:
-            gpu.intel.com/i915: 1
-
 service:
   main:
     controller: main
     ports:
       http:
-        port: 8096
+        port: 5055
 
 serviceMonitor:
   main:
@@ -50,7 +41,7 @@ serviceMonitor:
     enabled: true
     # -- Configures the endpoints for the serviceMonitor.
     # @default -- See values.yaml
-    serviceName: jellyfin
+    serviceName: jellyseerr
     endpoints:
       - port: http
         scheme: http
@@ -66,40 +57,24 @@ ingress:
     annotations:
       cert-manager.io/cluster-issuer: cf-issuer
     hosts:
-      - host: jellyfin.magi.furst.blue
+      - host: jellyseerr.magi.furst.blue
         paths:
           - # -- Path.  Helm template can be passed.
             path: /
             pathType: Prefix
             service:
               identifier: main
-              port: 8096
+              port: 5055
     tls:
       - hosts:
-          - jellyfin.magi.furst.blue
-        secretName: jellyfin-tls
+          - jellyseerr.magi.furst.blue
+        secretName: jellyseerr-tls
 
 persistence:
   config:
     type: persistentVolumeClaim
     storageClass: freenas-iscsi-csi
     accessMode: ReadWriteOnce
-    size: 50Gi
+    size: 1Gi
     globalMounts:
       - path: /config
-
-  media:
-    type: nfs
-    server: nas.furst.blue
-    path: /mnt/pool1/media
-    globalMounts:
-      - path: /data
-        readOnly: true
-  
-  homevideos:
-    type: nfs
-    server: nas.furst.blue
-    path: /mnt/pool1/papa/videos
-    globalMounts:
-      - path: /data/homevideos
-        readOnly: true
