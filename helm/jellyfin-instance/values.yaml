@@ -93,7 +93,7 @@ persistence:
     server: nas.furst.blue
     path: /mnt/pool1/media
     globalMounts:
-      - path: /data
+      - path: /media
         readOnly: true
   
   homevideos:
@@ -101,5 +101,5 @@ persistence:
     server: nas.furst.blue
     path: /mnt/pool1/papa/videos
     globalMounts:
-      - path: /data/homevideos
+      - path: /homevideos
         readOnly: true
