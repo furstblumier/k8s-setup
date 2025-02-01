@@ -16,7 +16,7 @@ serviceAccount:
 
 ## Specify the name of a TLS secret that contains a certificate and private key for your email domain.
 ## See https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
-certificate:
+certificate: mail-crt-secret
 
 # List extra RBL domains to use for hard reject filtering
 rblRejectDomains: []
@@ -70,7 +70,7 @@ deployment:
     # -----------------------------------------------
     # --- Required Section ---------------------------
     # -----------------------------------------------
-    OVERRIDE_HOSTNAME: k8s-mail.furst.blue     # You must OVERRIDE this!
+    OVERRIDE_HOSTNAME: k8s-mail.magi.furst.blue     # You must OVERRIDE this!
 
     # -----------------------------------------------
     # --- General Section ---------------------------
@@ -84,7 +84,7 @@ deployment:
     ENABLE_UPDATE_CHECK: 1
     UPDATE_CHECK_INTERVAL: 1d
     PERMIT_DOCKER: none
-    TZ: 
+    TZ: Europe/Berlin 
     NETWORK_INTERFACE: 
     TLS_LEVEL: 
     SPOOF_PROTECTION:
@@ -92,7 +92,7 @@ deployment:
     ENABLE_OPENDKIM: 0
     ENABLE_OPENDMARC: 0
     ENABLE_POLICYD_SPF: 0
-    ENABLE_POP3: 
+    ENABLE_POP3: 0
     ENABLE_IMAP: 1
     ENABLE_CLAMAV: 0
     ENABLE_RSPAMD: 1
@@ -284,13 +284,18 @@ deployment:
   #        mountPath: /mnt/extra-storage
 
   ## Optionally specify a list of extra mounts to add (normally used with extraVolumes)
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    - name: mail-data
+      mountPath: /var/mail
   #  - name: extra-storage
   #    mountPath: /mnt/extra-storage
 
   ## Optionally specify a list of extra volumes to add
   extraVolumes:
-    - 
+    - name: mail-data
+      nfs:
+        server: nas.furst.blue
+        path: /mnt/pool1/mail
   #  - name: extra-storage
   #    emptyDir: {}
 
@@ -307,10 +312,10 @@ service:
   ## Default: Automatically assign a random IP
   # privateIp:
   ## Only relevant if the `type` above is "LoadBalancer"
-  loadBalancer:
+loadBalancer:
     ## If there is already a reserved public IP that this load balancer should use, indicate it here.
     ## Default: Automatically assign a random, ephemeral IP
-    publicIp: 192.168.176.17
+  publicIp: 192.168.176.17
     ## If there should be firewall rules restricting the load balancer to a limited set of IPs, specify those IPs below
     ## in CIDR format. If all IPs should be allowed access, set the CIDR as "0.0.0.0/0"
     # allowedIps:
@@ -405,14 +410,15 @@ monitoring:
 
 rspamd:
   ingress:
-    enabled: false
-    ingressClassName: nginx
-    annotations: {}
-    host: rspamd.example.com
+    enabled: true
+    ingressClassName: cilium
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    host: rspamd.magi.furst.blue
     path: /
     tls:
-      enabled: false
-      secret:
+      enabled: true
+      secret: rspamd-tls 
 
 dovecot:
   fullTextSearch:
@@ -425,7 +431,7 @@ dovecot:
       schedule: 0 4 * * * # Every day at 4am
 
 proxyProtocol:
-  enabled: true
+  enabled: false
   # List of sources (in CIDR format, space-separated) to permit PROXY protocol from
   trustedNetworks: "10.0.0.0/8 192.168.0.0/16 172.16.0.0/16"
   
