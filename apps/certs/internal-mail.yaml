@@ -9,6 +9,8 @@ spec:
     - k8s-mail.magi.furst.blue
     - imap.magi.furst.blue
     - smtp.magi.furst.blue
+    - imap.furst.blue
+    - smtp.furst.blue
   issuerRef:
     name: cf-issuer
     # We can reference ClusterIssuers by changing the kind here.

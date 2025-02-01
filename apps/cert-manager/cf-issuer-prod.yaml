@@ -13,6 +13,7 @@ spec:
     - selector:
         dnsZones:
         - "magi.furst.blue"
+        - "furst.blue"
       dns01:
         cloudflare:
           apiTokenSecretRef:
