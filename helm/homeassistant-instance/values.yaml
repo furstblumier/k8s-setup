@@ -124,7 +124,7 @@ ingress:
     - host: hass.magi.furst.blue
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls:
     - secretName: homeassistant-tls
       hosts:
