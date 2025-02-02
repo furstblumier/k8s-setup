@@ -1,0 +1,5 @@
+chart:
+  name: home-assistant
+  repoURL: http://pajikos.github.io/home-assistant-helm-chart/
+  targetRevision: "2025.1.4"
+  namespace: home-assistant
