@@ -42,11 +42,11 @@ service:
       lbipam.cilium.io/sharing-cross-namespace: "*"
       lbipam.cilium.io/ips: "192.168.176.17"
     ports:
-      coiotTcp:
+      coiot-tcp:
         primary: false
         port: 5683
         protocol: TCP
-      coiotUdp:
+      coiot-udp:
         primary: false
         port: 5683
         protocol: UDP
