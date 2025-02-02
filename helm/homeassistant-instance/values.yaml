@@ -41,7 +41,7 @@ service:
     annotations:
       lbipam.cilium.io/sharing-cross-namespace: "*"
       # lbipam.cilium.io/ips: "192.168.176.17"
-      lbipam.cilium.io/sharing-key: "default"
+      lbipam.cilium.io/sharing-key: "1"
     ports:
       coiot-tcp:
         primary: false
