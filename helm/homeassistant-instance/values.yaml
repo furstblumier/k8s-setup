@@ -57,7 +57,7 @@ ingress:
     annotations:
       cert-manager.io/cluster-issuer: cf-issuer
     hosts:
-      - host: homeassistant.magi.furst.blue
+      - host: hass.magi.furst.blue
         paths:
           - # -- Path.  Helm template can be passed.
             path: /
@@ -67,7 +67,7 @@ ingress:
               port: 8123
     tls:
       - hosts:
-          - homeassistant.magi.furst.blue
+          - hass.magi.furst.blue
         secretName: homeassistant-tls
 
 persistence:
