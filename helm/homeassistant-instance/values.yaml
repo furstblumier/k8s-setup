@@ -34,6 +34,23 @@ service:
     ports:
       http:
         port: 8123
+  coiot:
+    controller: main
+    primary: false
+    type: LoadBalancer
+    annotations:
+      lbipam.cilium.io/sharing-cross-namespace: "*"
+      lbipam.cilium.io/ips: "192.168.176.17"
+    ports:
+      coiotTcp:
+        primary: false
+        port: 5683
+        protocol: TCP
+      coiotUdp:
+        primary: false
+        port: 5683
+        protocol: UDP
+  
 
 serviceMonitor:
   main:
