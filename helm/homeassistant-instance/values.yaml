@@ -37,6 +37,7 @@ service:
   coiot:
     controller: main
     primary: false
+    enabled: false
     type: LoadBalancer
     annotations:
       lbipam.cilium.io/ips: "192.168.176.18"
