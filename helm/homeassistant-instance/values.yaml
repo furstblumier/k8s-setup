@@ -39,9 +39,8 @@ service:
     primary: false
     type: LoadBalancer
     annotations:
-      lbipam.cilium.io/sharing-cross-namespace: "*"
       lbipam.cilium.io/ips: "192.168.176.17"
-      lbipam.cilium.io/sharing-key: "1"
+      lbipam.cilium.io/sharing-key: "default"
     ports:
       coiot-tcp:
         primary: false

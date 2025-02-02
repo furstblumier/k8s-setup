@@ -3,3 +3,6 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: home-assistant
+  annotations:
+    lbipam.cilium.io/sharing-cross-namespace: "*"
+

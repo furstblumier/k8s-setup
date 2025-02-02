@@ -323,9 +323,8 @@ service:
     ## If there is a Hostname associated with this site, add it here and it will be rendered in the documentation.
     # hostName:
   annotations:
-    lbipam.cilium.io/sharing-cross-namespace: "*"
     lbipam.cilium.io/ips: "192.168.176.17"
-    lbipam.cilium.io/sharing-key: "1"
+    lbipam.cilium.io/sharing-key: "default"
   labels: {}
 
 # Note this is a dictionary and not a list so individual keys can be overridden by --set or --value helm parameters

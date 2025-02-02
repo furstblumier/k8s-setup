@@ -3,3 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: mail
+  annotations:
+    lbipam.cilium.io/sharing-cross-namespace: "*"
