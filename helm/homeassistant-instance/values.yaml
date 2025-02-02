@@ -46,6 +46,7 @@ service:
     ports:
       coiot-tcp:
         primary: false
+        enabled: false
         port: 5683
         protocol: TCP
       coiot-udp:
