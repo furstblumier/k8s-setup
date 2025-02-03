@@ -44,17 +44,10 @@ service:
       # lbipam.cilium.io/sharing-key: "default"
       # lbipam.cilium.io/sharing-cross-namespace: "*"
     ports:
-      coiot-tcp:
-        primary: false
-        enabled: true
-        port: 5683
-        protocol: TCP
       coiot-udp:
         primary: false
-        enabled: false
         port: 5683
         protocol: UDP
-  
 
 serviceMonitor:
   main:
