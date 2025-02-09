@@ -12,6 +12,6 @@ spec:
     name: cloudflare-api-token-secret
 
   data:
-    - secretKey: CF_API_TOKEN
+    - secretKey: api-token
       remoteRef:
-        key: api-token
+        key: CF_API_TOKEN
