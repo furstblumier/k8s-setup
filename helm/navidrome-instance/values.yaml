@@ -23,8 +23,7 @@ controllers:
           ND_PORT: 8080
           ND_PROMETHEUS_ENABLED: true
           ND_SCANSCHEDULE: "@every 1h"
-          ND_LASTFM_APIKEY: "d3fec012063079f858124f3b40a72a84"
-          ND_LASTFM_SECRET: "9594cc4606cc9b2a4acc2e3d4955cd17"
+          ND_CONFIGFILE: /config/navidrome.toml
         probes:
           liveness: &probes
             enabled: true
