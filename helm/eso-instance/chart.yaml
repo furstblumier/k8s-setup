@@ -1,0 +1,5 @@
+chart:
+  name: external-secrets
+  repoURL: https://charts.external-secrets.io
+  targetRevision: "0.14.1"
+  namespace: external-secrets
