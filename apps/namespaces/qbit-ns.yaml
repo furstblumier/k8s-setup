@@ -3,3 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: qbit
+  labels:
+    pod-security.kubernete
