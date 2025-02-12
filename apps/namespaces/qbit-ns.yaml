@@ -4,4 +4,4 @@ metadata:
   creationTimestamp: null
   name: qbit
   labels:
-    pod-security.kubernete
+    pod-security.kubernetes.io/enforce: privileged
