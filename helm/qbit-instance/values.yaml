@@ -83,7 +83,7 @@ persistence:
   # Configure the main configuration storage location
   config:
     type: persistentVolumeClaim
-    storageClass: freenas-iscsi-csi
+    storageClass: freenas-nfs-csi
     accessMode: ReadWriteOnce
     size: 1Gi
     advancedMounts:
