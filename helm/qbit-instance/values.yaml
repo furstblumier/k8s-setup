@@ -44,7 +44,9 @@ controllers:
         # your VPN and how to set up port-forwarding.
         envFrom:
           - secretRef:
-              name: gluetun-env 
+              name: gluetun-env
+        env:
+          DNS_KEEP_NAMESERVER: "on"
         # Configure the container-specific securityContext
         securityContext:
           capabilities:
