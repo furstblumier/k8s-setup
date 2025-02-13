@@ -59,7 +59,7 @@ ingress:
     annotations:
       cert-manager.io/cluster-issuer: cf-issuer
     hosts:
-      - host: calendar.magi.furst.blue
+      - host: calendar.furst.blue
         paths:
           - # -- Path.  Helm template can be passed.
             path: /
@@ -69,7 +69,7 @@ ingress:
               port: 5232
     tls:
       - hosts:
-          - calendar.magi.furst.blue
+          - calendar.furst.blue
         secretName: calendar-tls
 
 persistence:
