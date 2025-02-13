@@ -304,6 +304,7 @@ service:
   ## - LoadBalancer (to the world)
   ## - ClusterIP (to the cluster)
   type: "LoadBalancer"
+  externalTrafficPolicy: "Cluster"
   ## If there is a port associated with a given service, expose it here.
   # port:
   ## If there is a particular IP that should be used for the service, specify it here.
