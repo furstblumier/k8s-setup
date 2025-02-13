@@ -45,8 +45,6 @@ controllers:
         envFrom:
           - secretRef:
               name: gluetun-env
-        env:
-          DNS_KEEP_NAMESERVER: "on"
         # Configure the container-specific securityContext
         securityContext:
           capabilities:
