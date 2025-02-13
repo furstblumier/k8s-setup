@@ -1,0 +1,83 @@
+controllers:
+  main:
+    pod:
+      securityContext:
+        runAsUser: 2999
+        runAsGroup: 2999
+        runAsNonRoot: true
+        fsGroup: 2999
+        fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: tomsquest/docker-radicale
+          tag: 3.4.1.0
+        env:
+          TZ: Europe/Berlin
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /
+                port: 5232
+              initialDelaySeconds: 0
+              periodSeconds: 30
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+          startup:
+            enabled: false
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 5232
+
+serviceMonitor:
+  main:
+    # -- Enables or disables the serviceMonitor.
+    enabled: false
+    # -- Configures the endpoints for the serviceMonitor.
+    # @default -- See values.yaml
+    serviceName: calendar
+    endpoints:
+      - port: http
+        scheme: http
+        path: /metrics
+        interval: 1m
+        scrapeTimeout: 10s
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    hosts:
+      - host: calendar.magi.furst.blue
+        paths:
+          - # -- Path.  Helm template can be passed.
+            path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 5232
+    tls:
+      - hosts:
+          - calendar.magi.furst.blue
+        secretName: calendar-tls
+
+persistence:
+  config:
+    type: persistentVolumeClaim
+    storageClass: freenas-iscsi-csi
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    globalMounts:
+      - path: /data
+
