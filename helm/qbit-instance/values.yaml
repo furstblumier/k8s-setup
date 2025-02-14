@@ -8,11 +8,8 @@ defaultPodOptions:
 controllers:
   # Configure the main controller
   main:
-    annotations:
     # Configure the pod-specific securityContext
-    pod:
-      securityContext:
-        fsGroupChangePolicy: "OnRootMismatch"
+    pod: {}
 
     containers:
       # Configure the main application container
