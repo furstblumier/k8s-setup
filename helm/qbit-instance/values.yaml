@@ -30,7 +30,6 @@ controllers:
     # Configure the gluetun sidecar
     initContainers:
       gluetun:
-        dependsOn: main
         image:
           # -- image repository
           repository: ghcr.io/qdm12/gluetun
@@ -49,6 +48,21 @@ controllers:
             add:
               - NET_ADMIN
 
+      curlpodtest:
+        image:
+          repository: curlimages/curl
+          tag: latest
+        command: ['/bin/sh', '-c']
+        args:
+          - |
+            IP=$(curl -s4 checkip.amazonaws.com)
+            EXPECTED_IP="141.144.196.15"
+            if [ "$IP" != "$EXPECTED_IP" ]; then
+              echo "IP is different from $EXPECTED_IP. Current IP is $IP."
+            else
+              echo "IP is $EXPECTED_IP. Exiting..."
+              exit 1
+            fi
 service:
   # Configure a service for the main application
   main:
