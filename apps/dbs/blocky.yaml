@@ -1,9 +1,8 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: keycloak-pg-cluster
-  labels:
-    homelab/part-of: blocky
+  name: blocky-pg-cluster
+  namespace: dns
 spec:
   instances: 2
   bootstrap:
