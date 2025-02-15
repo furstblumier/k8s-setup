@@ -29,19 +29,19 @@ controllers:
           TORRENTING_PORT: 47777
     # Configure the gluetun sidecar
     initContainers:
-      01-curlpodtest:
-        image:
-          repository: curlimages/curl
-          tag: latest
-        command: ['/bin/sh', '-c']
-        args:
-          - |
-            EXPECTED_IP="141.144.196.15"
-            while [ "$(curl -s4 checkip.amazonaws.com)" != "$EXPECTED_IP" ]; do
-              sleep 1 && echo "IP is different from $EXPECTED_IP. Current IP is $IP."
-            done
-            echo "IP is $EXPECTED_IP. Exiting..."
-            exit 1
+      # 01-curlpodtest:
+      #  image:
+      #    repository: curlimages/curl
+      #    tag: latest
+      #  command: ['/bin/sh', '-c']
+      #  args:
+      #    - |
+      #      EXPECTED_IP="141.144.196.15"
+      #      while [ "$(curl -s4 checkip.amazonaws.com)" != "$EXPECTED_IP" ]; do
+      #        sleep 1 && echo "IP is different from $EXPECTED_IP. Current IP is $IP."
+      #      done
+      #      echo "IP is $EXPECTED_IP. Exiting..."
+      #      exit 1
 
       00-gluetun:
         image:
