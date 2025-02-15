@@ -14,6 +14,7 @@ controllers:
     containers:
       # Configure the main application container
       main:
+        dependsOn: gluetun
         image:
           # -- image repository
           repository: lscr.io/linuxserver/qbittorrent
@@ -27,24 +28,42 @@ controllers:
           TZ: Europe/Berlin
           WEBUI_PORT: 8080
           TORRENTING_PORT: 47777
-    # Configure the gluetun sidecar
-    initContainers:
-      01-curlpodtest:
+      gluetun:
         image:
-          repository: curlimages/curl
+          # -- image repository
+          repository: ghcr.io/qdm12/gluetun
+          # -- image tag
+          # this example is not automatically updated, so be sure to use the latest image
           tag: latest
-        command: ['/bin/sh', '-c']
-        args:
-          - |
-            EXPECTED_IP="141.144.196.15"
-            while [ "$(curl -s4 checkip.amazonaws.com)" != "$EXPECTED_IP" ]; do
-              sleep 1 && echo "IP is different from $EXPECTED_IP. Current IP is $(curl -s4 checkip.amazonaws.com)."
-            done
-            echo "IP is $EXPECTED_IP. Exiting..."
-            exit 0
+        # -- environment variables.
+        # See [image docs](https://github.com/qdm12/gluetun-wiki) for more details on how to configure
+        # your VPN and how to set up port-forwarding.
+        envFrom:
+          - secretRef:
+              name: gluetun-env
+        # Configure the container-specific securityContext
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+
+    # Configure the gluetun sidecar
+    # initContainers:
+      # 01-curlpodtest:
+      #  image:
+      #    repository: curlimages/curl
+      #    tag: latest
+      #  command: ['/bin/sh', '-c']
+      #  args:
+      #    - |
+      #      EXPECTED_IP="141.144.196.15"
+      #      while [ "$(curl -s4 checkip.amazonaws.com)" != "$EXPECTED_IP" ]; do
+      #        sleep 1 && echo "IP is different from $EXPECTED_IP. Current IP is $IP."
+      #      done
+      #      echo "IP is $EXPECTED_IP. Exiting..."
+      #      exit 1
 
       00-gluetun:
-        restartPolicy: Always
         image:
           # -- image repository
           repository: ghcr.io/qdm12/gluetun
