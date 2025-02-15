@@ -36,14 +36,12 @@ controllers:
         command: ['/bin/sh', '-c']
         args:
           - |
-            IP=$(curl -s4 checkip.amazonaws.com)
             EXPECTED_IP="141.144.196.15"
-            if [ "$IP" != "$EXPECTED_IP" ]; then
-              echo "IP is different from $EXPECTED_IP. Current IP is $IP."
-            else
-              echo "IP is $EXPECTED_IP. Exiting..."
-              exit 1
-            fi
+            while [ "$(curl -s4 checkip.amazonaws.com)" != "$EXPECTED_IP" ]; do
+              sleep 1 && echo "IP is different from $EXPECTED_IP. Current IP is $IP."
+            done
+            echo "IP is $EXPECTED_IP. Exiting..."
+            exit 1
 
       gluetun:
         image:
