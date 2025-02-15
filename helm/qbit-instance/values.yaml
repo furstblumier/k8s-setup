@@ -27,7 +27,8 @@ controllers:
           TZ: Europe/Berlin
           WEBUI_PORT: 8080
           TORRENTING_PORT: 47777
-      # Configure the gluetun sidecar
+    # Configure the gluetun sidecar
+    initContainers:
       gluetun:
         dependsOn: main
         image:
