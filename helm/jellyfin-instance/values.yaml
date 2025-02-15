@@ -19,6 +19,7 @@ controllers:
           PUID: 1000
           PGID: 1000
           TZ: Europe/Berlin
+          DOCKER_MODS: ghcr.io/intro-skipper/intro-skipper-docker-mod
         probes:
           liveness: &probes
             enabled: true
