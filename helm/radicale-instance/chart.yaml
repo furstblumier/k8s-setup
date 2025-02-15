@@ -2,4 +2,4 @@ chart:
   name: app-template
   repoURL: https://bjw-s.github.io/helm-charts
   targetRevision: "3.6.1"
-  namespace: sonarr
+  namespace: radicale
