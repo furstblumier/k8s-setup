@@ -29,7 +29,7 @@ controllers:
           TORRENTING_PORT: 47777
     # Configure the gluetun sidecar
     initContainers:
-      curlpodtest:
+      01-curlpodtest:
         image:
           repository: curlimages/curl
           tag: latest
@@ -43,7 +43,7 @@ controllers:
             echo "IP is $EXPECTED_IP. Exiting..."
             exit 1
 
-      gluetun:
+      00-gluetun:
         image:
           # -- image repository
           repository: ghcr.io/qdm12/gluetun
