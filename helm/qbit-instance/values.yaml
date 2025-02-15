@@ -43,7 +43,8 @@ controllers:
       #      echo "IP is $EXPECTED_IP. Exiting..."
       #      exit 1
 
-      00-gluetun:
+      gluetun:
+        restartPolicy: Always
         image:
           # -- image repository
           repository: ghcr.io/qdm12/gluetun
