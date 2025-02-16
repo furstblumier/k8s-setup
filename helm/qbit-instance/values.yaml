@@ -64,6 +64,7 @@ controllers:
       #      exit 1
 
       gluetun:
+        restartPolicy: Always
         image:
           # -- image repository
           repository: ghcr.io/qdm12/gluetun
