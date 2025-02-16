@@ -37,6 +37,8 @@ controllers:
             - "NET_BIND_SERVICE"
             drop: 
             - "ALL"
+        env:
+          PGPASS: /app/.pgpass
         probes:
           liveness: &probes
             enabled: true
@@ -46,11 +48,13 @@ controllers:
                 command:
                   - /app/blocky
                   - healthcheck
-              initialDelaySeconds: 15
+              initialDelaySeconds: 60
               periodSeconds: 10
               timeoutSeconds: 1
               failureThreshold: 3
           readiness: *probes
+        environment:
+             value
 service:
   app:
     controller: blocky
@@ -116,3 +120,10 @@ persistence:
       - path: /app/config.yml
         subPath: config.yml
         readOnly: true
+  db:
+    type: secret
+    name: blocky-pg-cluster-app
+    defaultMode: 600
+    globalMounts:
+      - path: /app/.pgpass
+        subPath: pgpass 
