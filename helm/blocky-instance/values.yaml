@@ -53,8 +53,6 @@ controllers:
               timeoutSeconds: 1
               failureThreshold: 3
           readiness: *probes
-        environment:
-             value
 service:
   app:
     controller: blocky
