@@ -76,6 +76,7 @@ controllers:
         # your VPN and how to set up port-forwardingi.
         env:
           FIREWALL_OUTBOUND_SUBNETS: 10.96.0.0/12,10.244.0.0/16
+          DOT: off
         envFrom:
           - secretRef:
               name: gluetun-env
