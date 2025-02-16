@@ -19,7 +19,7 @@ controllers:
           repository: lscr.io/linuxserver/qbittorrent
           # -- image tag
           # this example is not automatically updated, so be sure to use the latest image
-          tag: latest
+          tag: libtorrentv1
         # Configure the container-specific securityContext
         env:
           PUID: 1000
