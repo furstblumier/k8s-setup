@@ -5,3 +5,6 @@ configMapGenerator:
 - name: blocky
   files:
     - config.yml
+generatorOptions:
+  disableNameSuffixHash: true
+
