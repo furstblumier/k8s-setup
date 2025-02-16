@@ -125,3 +125,4 @@ persistence:
     globalMounts:
       - path: /app/.pgpass
         subPath: pgpass 
+        readOnly: true
