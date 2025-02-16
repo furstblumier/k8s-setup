@@ -38,7 +38,7 @@ controllers:
             drop: 
             - "ALL"
         env:
-          PGPASS: /app/.pgpass
+          PGPASSFILE: /app/.pgpass
         probes:
           liveness: &probes
             enabled: true
