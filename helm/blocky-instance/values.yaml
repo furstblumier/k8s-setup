@@ -121,7 +121,7 @@ persistence:
   db:
     type: secret
     name: blocky-pg-cluster-app
-    defaultMode: 600
+    defaultMode: 0600
     globalMounts:
       - path: /app/.pgpass
         subPath: pgpass 
