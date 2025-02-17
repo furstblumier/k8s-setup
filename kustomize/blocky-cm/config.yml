@@ -112,7 +112,6 @@ blocking:
       - http://sysctl.org/cameleon/hosts
       - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
       - https://adaway.org/hosts.txt
-      - https://raw.githubusercontent.com/hkamran80/blocklists/main/smart-tv
       - https://v.firebog.net/hosts/Prigent-Ads.txt     
       - |
         # inline definition with YAML literal block scalar style
