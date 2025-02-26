@@ -36,7 +36,7 @@ controllers:
             drop: 
             - "ALL"
         env:
-          PGPASSFILE: /app/.pgpass
+          PGPASSFILE: /app/pgpass
         probes:
           liveness: &probes
             enabled: true
@@ -118,9 +118,10 @@ persistence:
         readOnly: true
   db:
     type: secret
+    enabled: true
     name: blocky-pg-cluster-app
-    defaultMode: 0400
+    defaultMode: 0600
     globalMounts:
-      - path: /app/.pgpass
+      - path: /app/pgpass
         subPath: pgpass 
         readOnly: true
