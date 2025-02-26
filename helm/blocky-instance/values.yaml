@@ -117,15 +117,15 @@ persistence:
       - path: /app/config.yml
         subPath: config.yml
         readOnly: true
-# db:
-#   type: secret
-#   enabled: true
-#   name: blocky-pg-cluster-app
-#   defaultMode: 0600
-#   globalMounts:
-#     - path: /app/pgpass
-#       subPath: pgpass 
-#       readOnly: true
+  db:
+    type: secret
+    enabled: true
+    name: blocky-pg-cluster-app
+    defaultMode: 0600
+    globalMounts:
+      - path: /app/pgpass
+        subPath: pgpass 
+        readOnly: true
   tls:
     type: secret
     name: blocky-tls
