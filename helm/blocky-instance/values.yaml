@@ -2,8 +2,6 @@ controllers:
   blocky:
     replicas: 2
     strategy: RollingUpdate
-    annotations:
-      reloader.stakater.com/auto: "true"
     pod:
       securityContext:
         runAsNonRoot: true
@@ -121,7 +119,7 @@ persistence:
   db:
     type: secret
     name: blocky-pg-cluster-app
-    defaultMode: 0600
+    defaultMode: 0400
     globalMounts:
       - path: /app/.pgpass
         subPath: pgpass 
