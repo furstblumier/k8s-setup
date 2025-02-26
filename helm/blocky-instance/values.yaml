@@ -128,7 +128,7 @@ persistence:
   tls:
     type: secret
     name: blocky-tls
-    defaultMode: 0600
+    # defaultMode: 0600
     globalMounts:
       - path: /app/tls.crt
         subPath: tls.crt
