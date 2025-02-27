@@ -95,7 +95,7 @@ ingress:
     annotations:
       cert-manager.io/cluster-issuer: cf-issuer
     hosts:
-      - host: dns.magi.furst.blue
+      - host: dns.furst.blue
         paths:
           - # -- Path.  Helm template can be passed.
             path: /
@@ -105,7 +105,7 @@ ingress:
               port: 4000
     tls:
       - hosts:
-          - dns.magi.furst.blue
+          - dns.furst.blue
         secretName: blocky-tls
 
 persistence:
