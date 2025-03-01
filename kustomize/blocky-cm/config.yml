@@ -107,19 +107,7 @@ blocking:
   # definition of blacklist groups. Can be external link (http/https) or local file
   denylists:
     ads:
-      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-      - http://sysctl.org/cameleon/hosts
-      - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-      - https://adaway.org/hosts.txt
-      - https://v.firebog.net/hosts/Prigent-Ads.txt     
-      - |
-        # inline definition with YAML literal block scalar style
-        # someadsdomain.com
-        # *.example.com
-        /^ad([sxv]?[0-9]*|system)[_.-]([^.[:space:]]+\.){1,}|[_.-]ad([sxv]?[0-9]*|system)[_.-]/
-        /^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-]/
-        /^adim(age|g)s?[0-9]*[_.-]/
+      - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro.txt
     no-blocking:
     # special:
     #   - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
