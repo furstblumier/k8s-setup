@@ -1,5 +1,5 @@
 chart:
   name: redis
-  repoURL: "https://charts.bitnami.com/bitnami/redis"
+  repoURL: "https://replicahq.github.io/bitnami-charts"
   targetRevision: "20.11.2"
   namespace: immich
