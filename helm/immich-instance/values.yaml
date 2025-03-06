@@ -103,7 +103,6 @@ ingress:
 persistence:
   library:
     enabled: true
-    mountPath: /usr/src/app/upload
     type: nfs
     server: nas.furst.blue
     path: /mnt/mnt/pool1/docker/syncthing
