@@ -35,7 +35,7 @@ controllers:
             spec:
               httpGet:
                 path: /api/server/ping
-                port: http
+                port: 2283
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
@@ -47,7 +47,7 @@ controllers:
             spec:
               httpGet:
                 path: /api/server/ping
-                port: http
+                port: 2283
               initialDelaySeconds: 0
               periodSeconds: 10
               timeoutSeconds: 1
