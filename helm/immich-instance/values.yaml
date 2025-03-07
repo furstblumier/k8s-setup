@@ -17,7 +17,10 @@ controllers:
             cpu: 100m
             memory: 250Mi
           limits:
-            memory: 1000Mi 
+            memory: 1000Mi
+        envFrom:
+          - configMapRef:
+            name: immich-config
         env:
           TZ: Europe/Berlin
           DB_URL:
