@@ -108,6 +108,6 @@ persistence:
     enabled: true
     type: nfs
     server: nas.furst.blue
-    path: /mnt/pool1/docker/syncthing
+    path: /mnt/pool1/mama
     globalMounts:
       - path: /usr/src/app/upload 
