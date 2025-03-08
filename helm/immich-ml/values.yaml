@@ -47,6 +47,7 @@ controllers:
               failureThreshold: 60
 service:
   main:
+    controller: main
     enabled: true
     primary: true
     type: ClusterIP
