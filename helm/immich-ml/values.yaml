@@ -1,0 +1,81 @@
+controllers:
+  main:
+    pod: {}
+      # securityContext:
+      #   runAsUser: 2000
+      #   runAsGroup: 2000
+      #   runAsNonRoot: true
+      #   fsGroup: 2000
+      #   fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: ghcr.io/immich-app/immich-machine-learning
+          tag: v1.129.0
+        resources:
+          requests:
+            cpu: 15m
+            memory: 250Mi
+          limits:
+            memory: 4000Mi
+        env:
+          TZ: Europe/Berlin
+          TRANSFORMERS_CACHE: /cache
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /ping
+                port: 3003
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /ping
+                port: 3003
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 60
+service:
+  main:
+    enabled: true
+    primary: true
+    type: ClusterIP
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 3003
+        protocol: HTTP
+
+serviceMonitor:
+  main:
+    # -- Enables or disables the serviceMonitor.
+    enabled: true
+    # -- Configures the endpoints for the serviceMonitor.
+    # @default -- See values.yaml
+    serviceName: immich
+    endpoints:
+      - port: metrics-api
+        scheme: http
+      - port: metrics-ms
+        scheme: http     
+persistence:
+  cache:
+    enabled: true
+    size: 10Gi
+    # Optional: Set this to pvc to avoid downloading the ML models every start.
+    type: persistenVolumeClaim
+    storageClass: freenas-iscsi-csi
+    accessMode: ReadWriteMany
+    globalMounts:
+      - path: /cache
