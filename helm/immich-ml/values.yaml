@@ -57,18 +57,6 @@ service:
         port: 3003
         protocol: HTTP
 
-serviceMonitor:
-  main:
-    # -- Enables or disables the serviceMonitor.
-    enabled: true
-    # -- Configures the endpoints for the serviceMonitor.
-    # @default -- See values.yaml
-    serviceName: immich
-    endpoints:
-      - port: metrics-api
-        scheme: http
-      - port: metrics-ms
-        scheme: http     
 persistence:
   cache:
     enabled: true
