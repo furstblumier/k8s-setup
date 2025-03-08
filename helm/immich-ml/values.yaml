@@ -74,7 +74,7 @@ persistence:
     enabled: true
     size: 10Gi
     # Optional: Set this to pvc to avoid downloading the ML models every start.
-    type: persistenVolumeClaim
+    type: persistentVolumeClaim
     storageClass: freenas-iscsi-csi
     accessMode: ReadWriteMany
     globalMounts:
