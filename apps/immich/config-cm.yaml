@@ -8,7 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: immich
 data:
-  DISABLE_REVERSE_GEOCODING: "true"
+  DISABLE_REVERSE_GEOCODING: "false"
   ENABLE_MAPBOX: "false"
   LOG_LEVEL: verbose
   NODE_ENV: production
