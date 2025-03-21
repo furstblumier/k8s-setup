@@ -647,7 +647,13 @@ configMaps:
 ##  If you set the create key to false, then you must manually create the ConfigMaps before deploying the chart.
 ##
 ##    kubectl create secret rspamd.example.com --namespace mail --from-file=rspamd.dkim.rsa-2048-mail-example.com.private.txt=<path_to_rspamd.dkim.rsa-2048-mail-example.com.private.txt>
-secrets: {}
+secrets:
+  mail-list:
+    name: postfix-virtual.cf
+    path: /tmp/docker-mailserver/postfix-virtual.cf
+    create: false
+
+
 
 ## @param extraDeploy Array of extra objects to deploy with the release
 ##
