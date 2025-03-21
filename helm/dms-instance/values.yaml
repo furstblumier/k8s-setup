@@ -639,7 +639,7 @@ configMaps:
 ##
 ##    kubectl create secret rspamd.example.com --namespace mail --from-file=rspamd.dkim.rsa-2048-mail-example.com.private.txt=<path_to_rspamd.dkim.rsa-2048-mail-example.com.private.txt>
 secrets:
-  mail-list:
+  postfix-virtual.cf:
     name: postfix-virtual.cf
     path: /tmp/docker-mailserver/postfix-virtual.cf
     create: false
