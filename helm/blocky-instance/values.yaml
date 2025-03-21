@@ -2,6 +2,8 @@ controllers:
   blocky:
     replicas: 2
     strategy: RollingUpdate
+    annotations:
+      reloader.stakater.com/auto: "true"
     pod:
       securityContext:
         runAsNonRoot: true
