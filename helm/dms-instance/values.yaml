@@ -29,7 +29,8 @@ deployment:
   affinity: {}
 
   ## Optionally add additional annotations to the deployment
-  annotations: {}  
+  annotations:
+    reloader.stakater.com/auto: "true"
 
   ## Optionally add additional labels to the deployment
   labels: {}  
