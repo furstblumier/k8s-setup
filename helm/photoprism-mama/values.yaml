@@ -42,7 +42,7 @@ controllers:
           # GID: 1000
           # UMASK: 0000
           PHOTOPRISM_ORIGINALS_LIMIT: 4000 # in MB (default 1000)
-
+          PHOTOPRISM_INDEX_SCHEDULE: "@hourly"
         envFrom:
           - secretRef:
               name: mariadb-password
