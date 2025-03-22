@@ -1,0 +1,113 @@
+controllers:
+  main:
+    pod: {}
+      # securityContext:
+      #   runAsUser: 2000
+      #   runAsGroup: 2000
+      #   runAsNonRoot: true
+      #   fsGroup: 2000
+      #   fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: ghcr.io/immich-app/immich-server
+          tag: v1.129.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 250Mi
+          limits:
+            memory: 1000Mi
+        envFrom:
+          - configMapRef:
+              name: immich-config
+        env:
+          TZ: Europe/Berlin
+          DB_URL:
+            valueFrom:
+              secretKeyRef:
+                name: immich-postgres-app 
+                key: uri
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/server/ping
+                port: 2283
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/server/ping
+                port: 2283
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 30
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 2283
+        protocol: HTTP
+      metrics-api:
+        enabled: true
+        port: 8081
+        protocol: HTTP
+      metrics-ms:
+        enabled: true
+        port: 8082
+        protocol: HTTP
+
+serviceMonitor:
+  main:
+    # -- Enables or disables the serviceMonitor.
+    enabled: true
+    # -- Configures the endpoints for the serviceMonitor.
+    # @default -- See values.yaml
+    serviceName: immich
+    endpoints:
+      - port: metrics-api
+        scheme: http
+      - port: metrics-ms
+        scheme: http     
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    hosts:
+      - host: immich.magi.furst.blue
+        paths:
+          - # -- Path.  Helm template can be passed.
+            path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 2283
+    tls:
+      - hosts:
+          - immich.magi.furst.blue
+        secretName: immich-tls
+
+persistence:
+  library:
+    enabled: true
+    type: nfs
+    server: nas.furst.blue
+    path: /mnt/pool1/mama
+    globalMounts:
+      - path: /usr/src/app/upload 

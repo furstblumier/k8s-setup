@@ -1,0 +1,127 @@
+controllers:
+  main:
+    pod: {}
+      # securityContext:
+      #   runAsUser: 2000
+      #   runAsGroup: 2000
+      #   runAsNonRoot: true
+      #   fsGroup: 2000
+      #   fsGroupChangePolicy: OnRootMismatch
+    containers:
+      main:
+        image:
+          repository: docker.io/photoprism/photoprism
+          tag: "latest@sha256:7397ec51dd576cdda92d89184599e86b311422be3d395caa2225bb2ea9e5c6fa"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 250Mi
+          limits:
+            gpu.intel.com/i915: 1
+
+        env:
+          PHOTOPRISM_STORAGE_PATH: /photoprism/storage
+          PHOTOPRISM_ORIGINALS_PATH: /photoprism/originals
+          ## See other config options from PhotoPrism documentation: https://docs.photoprism.org/getting-started/config-options/
+          # PHOTOPRISM_ADMIN_PASSWORD: "please-change"     # Initial admin password: PLEASE CHANGE!
+          # PHOTOPRISM_DEBUG: "false"                      # Run in debug mode (shows additional log messages)
+          PHOTOPRISM_AUTH_MODE: "public"                       # No authentication required (disables password protection)
+          # PHOTOPRISM_READONLY: "false"                   # Don't modify originals directory (reduced functionality)
+          # PHOTOPRISM_EXPERIMENTAL: "false"               # Enable experimental features
+          PHOTOPRISM_SITE_URL: "https://photos.magi.furst.blue/"  # Canonical / public site URL
+          # PHOTOPRISM_SITE_TITLE: ""
+          # PHOTOPRISM_SITE_CAPTION: "Casa"
+          # PHOTOPRISM_SITE_DESCRIPTION: "una descripcion"
+          PHOTOPRISM_SITE_AUTHOR: "Marion Dornhöfer"
+          # PHOTOPRISM_DATABASE_DRIVER: "mysql"
+          # # You may optionally set user, group and/or file permissions using environment variables:
+          # UID: 1000
+          # GID: 1000
+          # UMASK: 0000
+          PHOTOPRISM_ORIGINALS_LIMIT: 4000 # in MB (default 1000)
+        
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/v1/status
+                port: 2342
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 2342
+        protocol: HTTP
+      metrics-api:
+        enabled: true
+        port: 8081
+        protocol: HTTP
+      metrics-ms:
+        enabled: true
+        port: 8082
+        protocol: HTTP
+
+serviceMonitor:
+  main:
+    # -- Enables or disables the serviceMonitor.
+    enabled: true
+    # -- Configures the endpoints for the serviceMonitor.
+    # @default -- See values.yaml
+    serviceName: photos
+    endpoints:
+      - port: metrics-api
+        scheme: http
+      - port: metrics-ms
+        scheme: http     
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    hosts:
+      - host: photos.magi.furst.blue
+        paths:
+          - # -- Path.  Helm template can be passed.
+            path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 2342
+    tls:
+      - hosts:
+          - photos.magi.furst.blue
+        secretName: photos-tls
+
+persistence:
+  config:
+    enabled: true
+    type: persistentVolumeClaim
+    storageClass: freenas-iscsi-csi
+    accessMode: ReadWriteOnce
+    size: 200Gi
+    globalMounts:
+    - path: /photoprism/storage
+      readOnly: false
+
+  originals:
+    enabled: true
+    type: nfs
+    server: nas.furst.blue
+    path: /mnt/pool1/docker/syncthing
+    globalMounts:
+    - path: /photoprism/originals
+      readOnly: false
+
