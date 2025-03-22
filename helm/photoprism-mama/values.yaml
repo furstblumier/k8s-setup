@@ -111,7 +111,7 @@ persistence:
     type: persistentVolumeClaim
     storageClass: freenas-iscsi-csi
     accessMode: ReadWriteOnce
-    size: 200Gi
+    size: 100Gi
     globalMounts:
     - path: /photoprism/storage
       readOnly: false
