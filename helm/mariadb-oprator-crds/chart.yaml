@@ -1,0 +1,5 @@
+chart:
+  name: mariadb-operator
+  repoURL: "https://helm.mariadb.com/mariadb-operator"
+  targetRevision: "0.37.1"
+  namespace: mariadb-system
