@@ -1,5 +1,0 @@
-chart:
-  name: redis
-  repoURL: "registry-1.docker.io/bitnamicharts"
-  targetRevision: "20.11.2"
-  namespace: immich
