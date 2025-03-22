@@ -3,10 +3,12 @@ kind: MariaDB
 metadata:
   name: photoprism
   namespace: photoprism
+
 spec:
   rootPasswordSecretKeyRef:
     name: mariadb-root
     key: password
+    generate: false
 
   username: photoprism
   passwordSecretKeyRef:
