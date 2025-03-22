@@ -1,0 +1,50 @@
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: MariaDB
+metadata:
+  name: photoprism
+spec:
+  rootPasswordSecretKeyRef:
+    name: mariadb-root
+    key: password
+
+  username: photoprism
+  passwordSecretKeyRef:
+    name: mariadb-password
+    key: password
+    generate: true
+  
+  database: photoprism
+
+  port: 3306
+
+  image: docker-registry1.mariadb.com/library/mariadb:11
+  imagePullPolicy: IfNotPresent
+
+  storage:
+    size: 1Gi
+
+  service:
+    type: ClusterIP
+
+  myCnf: |
+    [mariadb]
+    bind-address=*
+    innodb-buffer-pool-size=512M 
+    transaction-isolation=READ-COMMITTED 
+    character-set-server=utf8mb4 
+    collation-server=utf8mb4_unicode_ci 
+    max-connections=512 
+    innodb-rollback-on-timeout=OFF 
+    innodb-lock-wait-timeout=120
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 1Gi
+  env:
+    MARIADB_AUTO_UPGRADE: "1"
+    MARIADB_INITDB_SKIP_TZINFO: "1"
+  metrics:
+    enabled: true
