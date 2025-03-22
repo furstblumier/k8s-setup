@@ -13,7 +13,7 @@ spec:
   username: photoprism
   passwordSecretKeyRef:
     name: mariadb-password
-    key: password
+    key: PHOTOPRISM_DATABASE_PASSWORD
     generate: true
   
   database: photoprism
