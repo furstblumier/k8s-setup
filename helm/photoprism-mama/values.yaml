@@ -43,7 +43,7 @@ controllers:
           # UMASK: 0000
           PHOTOPRISM_ORIGINALS_LIMIT: 4000 # in MB (default 1000)
 
-          envFrom:
+        envFrom:
           - secretRef:
               name: mariadb-password
 
