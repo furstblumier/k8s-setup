@@ -43,6 +43,9 @@ controllers:
           # UMASK: 0000
           PHOTOPRISM_ORIGINALS_LIMIT: 4000 # in MB (default 1000)
           PHOTOPRISM_INDEX_SCHEDULE: "@hourly"
+
+          PHOTOPRISM_FFMPEG_ENCODER: "intel"
+          PHOTOPRISM_INIT: "intel"
         envFrom:
           - secretRef:
               name: mariadb-password
