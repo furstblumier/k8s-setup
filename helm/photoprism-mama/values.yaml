@@ -30,7 +30,7 @@ controllers:
           # PHOTOPRISM_EXPERIMENTAL: "false"               # Enable experimental features
           PHOTOPRISM_SITE_URL: "https://photos.magi.furst.blue/"  # Canonical / public site URL
           PHOTOPRISM_SITE_TITLE: "Marion's Gallerie"
-          # PHOTOPRISM_SITE_CAPTION: "Casa"
+          PHOTOPRISM_SITE_CAPTION: "Marion's Gallerie"
           # PHOTOPRISM_SITE_DESCRIPTION: "una descripcion"
           PHOTOPRISM_SITE_AUTHOR: "Marion Dornhöfer"
           PHOTOPRISM_DATABASE_DRIVER: "mysql"
