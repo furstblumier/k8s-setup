@@ -130,7 +130,7 @@ persistence:
         readOnly: true
   db:
     type: secret
-    enabled: true
+    enabled: false
     name: blocky-pg-cluster-app
     defaultMode: 0600
     globalMounts:
