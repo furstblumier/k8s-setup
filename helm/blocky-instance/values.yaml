@@ -19,6 +19,15 @@ controllers:
           labelSelector:
             matchLabels:
               app.kubernetes.io/name: blocky
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:  
+                  app.kubernetes.io/name: blocky
+              topologyKey: "kubernetes.io/hostname"
     containers:
       app:
         image:
