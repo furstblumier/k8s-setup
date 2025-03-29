@@ -18,15 +18,15 @@ controllers:
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:
-              app.kubernetes.io/name: blocky
+              app.kubernetes.io/component: blocky
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
             podAffinityTerm:
               labelSelector:
-                matchLabels:  
-                  app.kubernetes.io/name: blocky
+                matchLabels: 
+                  app.kubernetes.io/component: blocky
               topologyKey: "kubernetes.io/hostname"
     containers:
       app:
