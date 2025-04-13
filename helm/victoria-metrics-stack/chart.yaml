@@ -1,5 +1,5 @@
 chart:
-  name: victoria-metrics-operator
+  name: victoria-metrics-k8s-stack
   repoURL: https://victoriametrics.github.io/helm-charts/
-  targetRevision: "0.44.0"
-  namespace: victoria-metrics-operator
+  targetRevision: "0.42.0"
+  namespace: victoria-metrics-k8s-stack
