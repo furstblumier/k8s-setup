@@ -1,0 +1,8 @@
+victoria-metrics-operator:
+  enabled: false
+
+grafana:
+  enabled: true
+  persistence:
+    type: pvc
+    enabled: true
