@@ -168,7 +168,7 @@ web:
   role: web
   image:
     repository: docker.io/kubernetesui/dashboard-web
-    tag: v1.0.0
+    tag: 1.6.2
   containers:
     ports:
       - name: web
