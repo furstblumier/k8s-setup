@@ -4,3 +4,7 @@ admissionWebhooks:
   certManager:
     # enables cert creation and injection by cert-manager
     enabled: true
+
+env:
+  - name: VM_PROMETHEUSCONVERTERADDARGOCDIGNOREANNOTATIONS
+    value: true
