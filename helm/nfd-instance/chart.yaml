@@ -1,5 +1,5 @@
 chart:
   name: node-feature-discovery
   repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
-  targetRevision: v0.17.1
+  targetRevision: v0.17.3
   namespace: node-feature-discovery
