@@ -116,7 +116,7 @@ api:
   role: api
   image:
     repository: docker.io/kubernetesui/dashboard-api
-    tag: 1.11.1
+    tag: 1.13.0
   containers:
     ports:
       - name: api
