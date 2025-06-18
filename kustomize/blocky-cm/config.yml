@@ -70,7 +70,7 @@ customDNS:
     alertmanager.furst.blue: 192.168.178.100
     traefik.furst.blue: 192.168.178.100
     backup.furst.blue: 192.168.178.100
-    sync.furst.blue: 192.168.178.100
+    sync.furst.blue: 192.168.176.16,192.168.176.17
     samba.furst.blue: 192.168.178.100
     calendar.furst.blue: 192.168.176.16
     imap.furst.blue: 192.168.176.17
@@ -85,6 +85,7 @@ customDNS:
     magi.furst.blue: 192.168.176.16
     kvm.furst.blue: 192.168.176.37
     i2pd.furst.blue: 192.168.178.100
+    sync.magi.furst.blue: 192.168.176.16,192.168.176.17
 
 
 # optional: definition, which DNS resolver(s) should be used for queries to the domain (with all sub-domains). Multiple resolvers must be separated by a comma
