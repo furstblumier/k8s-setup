@@ -11,7 +11,7 @@
       "customType": "regex",
       "datasourceTemplate": "github-releases",
       "managerFilePatterns": [
-        "/helm/chart.yaml"
+        "/helm/**/chart.yaml"
       ],
       "matchStrings": [
         " +targetRevision: +(?<currentValue>[^'\" ]+) +# renovate: depName=(?<depName>[^ \\n]+) +(extractVersion=(?<extractVersion>[^\\n]+))?"
