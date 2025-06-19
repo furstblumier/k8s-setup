@@ -30,7 +30,7 @@ controllers:
           startup:
             enabled: false
 service:
-  web:
+  main:
     controller: main
     ports:
       http:
