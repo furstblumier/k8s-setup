@@ -67,7 +67,7 @@ driver:
 
   existingConfigSecret: democratic-csi-iscsi-secret
 
-  controller:
-    driver:
-      image:
-        tag: next
+controller:
+  driver:
+    image:
+      tag: next
