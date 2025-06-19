@@ -43,10 +43,18 @@ volumeSnapshotClasses: []
 #    snapshotter-secret:
 
 driver:
+  # workaround for new truenas
+  image:
+    tag: next
   config:
     # please see the most up-to-date example of the corresponding config here:
     # https://github.com/democratic-csi/democratic-csi/tree/master/examples
     # YOU MUST COPY THE DATA HERE INLINE!
     driver: freenas-api-nfs
   existingConfigSecret: democratic-csi-nfs-secret
+
+controller:
+  driver:
+    image:
+      tag: next
 

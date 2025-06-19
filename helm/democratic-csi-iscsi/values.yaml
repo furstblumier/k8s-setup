@@ -60,7 +60,14 @@ node:
     iscsiDirHostPathType: ""
 
 driver:
+  image:
+    tag: next
   config:
     driver: freenas-api-iscsi
 
   existingConfigSecret: democratic-csi-iscsi-secret
+
+  controller:
+    driver:
+      image:
+        tag: next
