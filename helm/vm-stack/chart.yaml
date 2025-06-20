@@ -1,5 +1,5 @@
 chart:
   name: victoria-metrics-k8s-stack
   repoURL: https://victoriametrics.github.io/helm-charts/
-  targetRevision: "0.44.0" # renovate: depName=VictoriaMetrics/helm-charts extractVersion=^victoria-metrics-k8s-stack-(?<version>.+)$
+  targetRevision: "0.52.0" # renovate: depName=VictoriaMetrics/helm-charts extractVersion=^victoria-metrics-k8s-stack-(?<version>.+)$
   namespace: victoria-metrics
