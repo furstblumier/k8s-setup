@@ -1,5 +1,5 @@
 chart:
   name: reloader
   repoURL: "https://stakater.github.io/stakater-charts"
-  targetRevision: "2.0.0" # renovate: depName=stakater/Reloader extractVersion=^chart-(?<version>.+)$
+  targetRevision: "v2.1.4" # renovate: depName=stakater/Reloader extractVersion=^chart-(?<version>.+)$
   namespace: reloader
