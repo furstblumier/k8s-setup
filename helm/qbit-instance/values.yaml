@@ -122,7 +122,9 @@ ingress:
 persistence:
   # Configure the main configuration storage location
   config:
+    enabled: true
     type: persistentVolumeClaim
+    suffix: config
     storageClass: freenas-iscsi-csi
     accessMode: ReadWriteOnce
     size: 1Gi
