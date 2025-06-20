@@ -332,7 +332,7 @@ service:
   labels: {}
 
 # Note this is a dictionary and not a list so individual keys can be overridden by --set or --value helm parameters
-persistence:
+persistent_volume_claims:
   # Stores generated configuration files
   # https://docker-mailserver.github.io/docker-mailserver/edge/faq/#what-about-the-docker-datadmsconfig-directory
   mail-config:
