@@ -1,5 +1,5 @@
 chart:
   name: app-template
   repoURL: https://bjw-s-labs.github.io/helm-charts
-  targetRevision: "3.7.3" # renovate: depName=bjw-s-labs/helm-charts extractVersion=^app-template-(?<version>.+)$
+  targetRevision: "4.1.1" # renovate: depName=bjw-s-labs/helm-charts extractVersion=^app-template-(?<version>.+)$
   namespace: syncthing 
