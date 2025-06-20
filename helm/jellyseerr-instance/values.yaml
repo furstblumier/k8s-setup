@@ -11,7 +11,7 @@ controllers:
       main:
         image:
           repository: fallenbagel/jellyseerr
-          tag: latest
+          tag: 2.7.0
         env:
           TZ: Europe/Berlin
         probes:
