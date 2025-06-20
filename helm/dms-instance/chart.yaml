@@ -1,5 +1,5 @@
 chart:
   name: docker-mailserver
   repoURL: https://docker-mailserver.github.io/docker-mailserver-helm
-  targetRevision: "4.1.4"
+  targetRevision: "4.1.4"  # renovate: depName=docker-mailserver/docker-mailserver-helm extractVersion=^docker-mailserver-(?<version>.+)$
   namespace: mail

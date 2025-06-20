@@ -1,5 +1,5 @@
 chart:
   name: democratic-csi
   repoURL: https://democratic-csi.github.io/charts/
-  targetRevision: 0.15.0
+  targetRevision: 0.15.0  # renovate: depName=democratic-csi/charts extractVersion=^democratic-csi-(?<version>.+)$
   namespace: democratic-csi

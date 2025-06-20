@@ -1,5 +1,5 @@
 chart:
   name: node-feature-discovery
   repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
-  targetRevision: v0.17.3
+  targetRevision: v0.17.3 # renovate: depName=kubernetes-sigs/node-feature-discovery extractVersion=^(?<version>.+)$
   namespace: node-feature-discovery
