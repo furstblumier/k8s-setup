@@ -1,5 +1,5 @@
 chart:
   name: cert-manager
   repoURL: https://charts.jetstack.io
-  targetRevision: v1.17.2 # renovate: depName=cert-manager/cert-manager extractVersion=^(?<version>.+)$
+  targetRevision: v1.18.1 # renovate: depName=cert-manager/cert-manager extractVersion=^(?<version>.+)$
   namespace: cert-manager
