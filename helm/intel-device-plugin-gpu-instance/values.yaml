@@ -1,3 +1,2 @@
 tolerations: []
-annotations:
-  key: value
+annotations: {}
