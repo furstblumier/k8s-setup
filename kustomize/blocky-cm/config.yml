@@ -145,8 +145,8 @@ blocking:
     192.168.178.26:
       - no-blocking
     # Fernseher EG WLAN
-    192.168.178.38:
-      - no-blocking
+    # 192.168.178.38:
+    #   - no-blocking
     # Fernseher EG LAN
     # 192.168.176.44:
     #   - no-blocking
