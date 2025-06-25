@@ -148,8 +148,8 @@ blocking:
     192.168.178.38:
       - no-blocking
     # Fernseher EG LAN
-    192.168.176.44:
-      - no-blocking
+    # 192.168.176.44:
+    #   - no-blocking
     # samsung tablet papa
     192.168.178.22:
       - no-blocking
