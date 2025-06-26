@@ -1,0 +1,5 @@
+chart:
+  name: argo-cd
+  repoURL: https://argoproj.github.io/argo-helm
+  targetRevision: "8.0.0" # renovate: depName=argoproj/argo-helm extractVersion=^argocd-cd-(?<version>.+)$
+  namespace: argocd

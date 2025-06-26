@@ -1,0 +1,29 @@
+global:
+  domain: argocd.magi.furst.blue
+
+configs:
+  params:
+    server.insecure: true
+
+redis-ha:
+  enabled: true
+
+controller:
+  replicas: 1
+
+server:
+  replicas: 2
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    extraTls:
+      - hosts:
+        - argocd.magi.furst.blue
+        secretName: argocd-tls
+
+repoServer:
+  replicas: 2
+
+applicationSet:
+  replicas: 2
