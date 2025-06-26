@@ -1,5 +1,5 @@
 chart:
   name: external-secrets
   repoURL: https://charts.external-secrets.io
-  targetRevision: "0.18.0"  # renovate: depName=external-secrets/external-secrets extractVersion=^helm-chart-(?<version>.+)$
+  targetRevision: "0.18.1"  # renovate: depName=external-secrets/external-secrets extractVersion=^helm-chart-(?<version>.+)$
   namespace: external-secrets
