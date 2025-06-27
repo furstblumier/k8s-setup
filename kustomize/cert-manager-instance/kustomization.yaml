@@ -9,3 +9,4 @@ helmCharts:
   version: v1.18.1
   releaseName: cert-manager-instance
   valuesFile: values.yaml
+  includeCRDs: true
