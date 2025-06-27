@@ -1,5 +1,0 @@
-chart:
-  name: mariadb-operator-crds
-  repoURL: "https://helm.mariadb.com/mariadb-operator"
-  targetRevision: "0.38.1"  # renovate: depName=mariadb-operator/mariadb-operator extractVersion=^mariadb-operator-crds-(?<version>.+)$
-  namespace: mariadb-system

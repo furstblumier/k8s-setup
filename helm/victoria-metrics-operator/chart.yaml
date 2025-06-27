@@ -1,5 +1,0 @@
-chart:
-  name: victoria-metrics-operator
-  repoURL: https://victoriametrics.github.io/helm-charts/
-  targetRevision: "0.50.2" # renovate: depName=VictoriaMetrics/helm-charts extractVersion=^victoria-metrics-operator-(?<version>.+)$
-  namespace: victoria-metrics-operator
