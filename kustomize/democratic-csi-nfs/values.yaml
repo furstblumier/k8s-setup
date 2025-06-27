@@ -14,6 +14,11 @@ storageClasses:
       # for block-based storage can be ext3, ext4, xfs
       # for nfs should be nfs
       fsType: nfs
+      csi.storage.k8s.io/controller-expand-secret-namespace: democratic-csi
+      csi.storage.k8s.io/controller-publish-secret-namespace: democratic-csi
+      csi.storage.k8s.io/node-publish-secret-namespace: democratic-csi
+      csi.storage.k8s.io/node-stage-secret-namespace: democratic-csi
+      csi.storage.k8s.io/provisioner-secret-namespace: democratic-csi
 
       # if true, volumes created from other snapshots will be
       # zfs send/received instead of zfs cloned
