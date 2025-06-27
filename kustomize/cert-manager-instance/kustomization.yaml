@@ -10,3 +10,4 @@ helmCharts:
   releaseName: cert-manager-instance
   valuesFile: values.yaml
   includeCRDs: true
+  namespace: cert-manager
