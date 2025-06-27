@@ -11,3 +11,5 @@ helmCharts:
   - monitoring.coreos.com/v1
   valuesFile: values.yaml
   includeCRDs: true
+  releaseName: argocd
+
