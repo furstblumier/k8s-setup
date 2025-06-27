@@ -1,0 +1,149 @@
+controllers:
+  blocky:
+    replicas: 2
+    strategy: RollingUpdate
+    annotations:
+      reloader.stakater.com/auto: "true"
+    pod:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 100
+        seccompProfile: 
+          type: RuntimeDefault
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: blocky
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels: 
+                  app.kubernetes.io/component: blocky
+              topologyKey: "kubernetes.io/hostname"
+    containers:
+      app:
+        image:
+          repository: ghcr.io/0xerr0r/blocky
+          tag: v0.26@sha256:b259ada3f943e73283f1fc5e84ac39a791afec7de86515d1aeccc03d2c39e595
+        resources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+          limits:
+            memory: 512Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            add: 
+            - "NET_BIND_SERVICE"
+            drop: 
+            - "ALL"
+        env:
+          PGPASSFILE: /app/pgpass
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - /app/blocky
+                  - healthcheck
+              initialDelaySeconds: 60
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness: *probes
+service:
+  app:
+    controller: blocky
+    ports:
+      http:
+        port: 4000
+  dns:
+    controller: blocky
+    type: LoadBalancer
+    annotations:
+      lbipam.cilium.io/ips: "192.168.176.17"
+      lbipam.cilium.io/sharing-key: "default"
+      lbipam.cilium.io/sharing-cross-namespace: "*"
+    ports:
+      dns-tcp:
+        enabled: true
+        port: 53
+        protocol: TCP
+      dns-udp:
+        enabled: true
+        port: 53
+        protocol: UDP
+      dot:
+        enabled: true
+        port: 853
+        protocol: TCP
+
+serviceMonitor:
+  main:
+    serviceName: blocky
+    endpoints:
+      - interval: 30s
+        path: /metrics
+        port: http
+        scrapeTimeout: 10s
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  app:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cf-issuer
+    hosts:
+      - host: dns.furst.blue
+        paths:
+          - # -- Path.  Helm template can be passed.
+            path: /
+            pathType: Prefix
+            service:
+              identifier: app
+              port: 4000
+    tls:
+      - hosts:
+          - dns.furst.blue
+        secretName: blocky-tls
+
+persistence:
+  config:
+    enabled: true
+    type: configMap
+    name: blocky
+    globalMounts:
+      - path: /app/config.yml
+        subPath: config.yml
+        readOnly: true
+  db:
+    type: secret
+    enabled: false
+    name: blocky-pg-cluster-app
+    defaultMode: 0600
+    globalMounts:
+      - path: /app/pgpass
+        subPath: pgpass 
+        readOnly: true
+  tls:
+    type: secret
+    name: blocky-tls
+    defaultMode: 0600
+    globalMounts:
+      - path: /app/tls.crt
+        subPath: tls.crt
+      - path: /app/tls.key
+        subPath: tls.key
+
