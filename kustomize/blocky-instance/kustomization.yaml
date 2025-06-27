@@ -3,6 +3,13 @@ kind: Kustomization
 
 namespace: dns
 
+configMapGenerator:
+- name: blocky
+  files:
+    - config.yml
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: app-template
   releaseName: blocky-instance
