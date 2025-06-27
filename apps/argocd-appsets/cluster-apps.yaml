@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+        - path: apps/**
+        pathParamPrefix: apps
+        repoURL: 'git@github.com:furstblumier/k8s-setup.git'
+        revision: main
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{apps.path.basename}}'
+    spec:
+      project: default
+      destination: 
+        server: "https://kubernetes.default.svc"
+      source:
+        path: '{{apps.path}}'
+        repoURL: 'git@github.com:furstblumier/k8s-setup.git'
+        targetRevision: main
+        # enable this in argocd to be able to use vault
+        # plugin:
+        #   name: argocd-vault-plugin
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+          - ServerSideApply=true
+
