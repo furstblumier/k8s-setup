@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: qbit
 
+resources:
+  - gluetun-secret.yaml
+
 helmCharts:
 - name: app-template
   releaseName: qbit-instance

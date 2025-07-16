@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: democratic-csi
 
+resources:
+  - democratic-csi-nfs.yaml
+
 helmCharts:
 - name: democratic-csi
   repo: https://democratic-csi.github.io/charts/

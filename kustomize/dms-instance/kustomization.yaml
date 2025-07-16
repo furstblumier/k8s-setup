@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: mail
 
+resources:
+  - mail-list-secret.yaml
+
 helmCharts:
 - name: docker-mailserver
   repo:  https://docker-mailserver.github.io/docker-mailserver-helm
