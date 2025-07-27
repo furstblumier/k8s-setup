@@ -64,7 +64,7 @@ customDNS:
     music.furst.blue: 192.168.178.100
     metrics.furst.blue: 192.168.178.100
     monitoring.furst.blue: 192.168.178.100
-    dns.furst.blue: 192.168.176.17
+    dns.furst.blue: 192.168.176.16,192.168.176.17
     esphome.furst.blue: 192.168.178.100
     remote.furst.blue: 192.168.178.100
     alertmanager.furst.blue: 192.168.178.100
