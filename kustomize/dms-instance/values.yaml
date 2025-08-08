@@ -325,7 +325,7 @@ service:
     ## If there is a Hostname associated with this site, add it here and it will be rendered in the documentation.
     # hostName:
   annotations:
-    lbipam.cilium.io/ips: "192.168.176.17"
+    lbipam.cilium.io/ips: "192.168.176.16"
     lbipam.cilium.io/sharing-key: "default"
     lbipam.cilium.io/sharing-cross-namespace: "*"
 
