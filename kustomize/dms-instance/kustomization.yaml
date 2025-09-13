@@ -9,7 +9,7 @@ resources:
 helmCharts:
 - name: docker-mailserver
   repo:  https://docker-mailserver.github.io/docker-mailserver-helm
-  version: 4.2.2 
+  version: 4.2.4 
   releaseName: dms-instance
   valuesFile: values.yaml
   namespace: mail
