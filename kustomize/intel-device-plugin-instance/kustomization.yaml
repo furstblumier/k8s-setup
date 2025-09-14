@@ -6,7 +6,7 @@ namespace: intel-device-plugins
 helmCharts:
 - name: intel-device-plugins-operator
   repo: https://intel.github.io/helm-charts/
-  version: 0.34.0
+  version: 0.32.1
   releaseName: intel-device-plugin-instance
   valuesFile: values.yaml
   namespace: intel-device-plugins
