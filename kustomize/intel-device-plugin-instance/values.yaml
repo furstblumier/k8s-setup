@@ -1,1 +1,4 @@
 installCRDs: true
+manager:
+  devices:
+    gpu: true
