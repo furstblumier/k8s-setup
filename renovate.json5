@@ -6,4 +6,11 @@
   "ignorePaths": [
     "**/archive/**"
   ],
+  "packageRules": [
+    {
+      "description": "Automerge non-major updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ],
 }
