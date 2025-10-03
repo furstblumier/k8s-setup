@@ -6,5 +6,5 @@ namespace: node-feature-discovery
 helmCharts:
 - name: node-feature-discovery
   repo: https://kubernetes-sigs.github.io/node-feature-discovery/charts
-  version: 0.17.4 
+  version: 0.18.0 
   valuesFile: values.yaml
