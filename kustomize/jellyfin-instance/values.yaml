@@ -86,7 +86,7 @@ persistence:
     suffix: config
     storageClass: freenas-iscsi-csi
     accessMode: ReadWriteOnce
-    size: 50Gi
+    size: 250Gi
     globalMounts:
       - path: /config
 
