@@ -70,7 +70,7 @@ ingress:
     tls:
       - hosts:
           - sonarr-anime.magi.furst.blue
-        secretName: sonarr-anime.tls
+        secretName: sonarr-anime-tls
 
 persistence:
   config:
