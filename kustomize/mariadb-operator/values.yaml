@@ -5,3 +5,6 @@ webhook:
   cert:
     certManager:
       enabled: true
+  ha:
+    enabled: true
+    replicas: 2
