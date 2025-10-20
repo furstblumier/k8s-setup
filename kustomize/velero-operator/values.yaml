@@ -46,3 +46,19 @@ configuration:
       region: "minio"
       s3ForcePathStyle: true
       s3Url: "https://nas.furst.blue:9000"
+
+  volumeStorageLocation:
+    # name is the name of the backup storage location where backups should be stored. If a name is not provided,
+    # a backup storage location will be created with the name "default". Optional.
+  - name: "default"
+    # provider is the name for the backup storage location provider.
+    provider: "aws"
+    credential:
+      # name of the secret used by this backupStorageLocation.
+      name: "minio-secret"
+      # name of key that contains the secret data to be used.
+      key: "config"
+    # Additional provider-specific configuration. See link above
+    # for details of required/optional fields for your provider.
+    config:
+      region: "minio"
