@@ -47,7 +47,7 @@ configuration:
       s3ForcePathStyle: true
       s3Url: "https://nas.furst.blue:9000"
 
-  volumeStorageLocation:
+  volumeSnapshotLocation:
     # name is the name of the backup storage location where backups should be stored. If a name is not provided,
     # a backup storage location will be created with the name "default". Optional.
   - name: "default"
