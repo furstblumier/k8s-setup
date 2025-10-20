@@ -33,9 +33,9 @@ configuration:
     # accessMode: ReadWrite
     credential:
       # name of the secret used by this backupStorageLocation.
-      name: minio-secret
+      name: "minio-secret"
       # name of key that contains the secret data to be used.
-      key:
+      key: "config"
     # Additional provider-specific configuration. See link above
     # for details of required/optional fields for your provider.
     config:
