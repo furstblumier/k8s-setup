@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: velero
 
+resources:
+  - minio-externalsecret.yaml
+
 helmCharts:
 - name: velero
   repo: "https://vmware-tanzu.github.io/helm-charts/"
