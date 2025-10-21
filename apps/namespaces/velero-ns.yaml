@@ -3,3 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: velero
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
