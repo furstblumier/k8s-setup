@@ -1,3 +1,5 @@
+deployNodeAgent: true
+
 kubectl:
   image:
     tag: 1.33.4
