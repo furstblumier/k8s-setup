@@ -40,13 +40,13 @@ storageClasses:
       controller-expand-secret:
 
 # if your cluster supports snapshots you may enable below
-volumeSnapshotClasses: []
-#- name: freenas-iscsi-csi
-#  parameters:
-#  # if true, snapshots will be created with zfs send/receive
-#  # detachedSnapshots: "false"
-#  secrets:
-#    snapshotter-secret:
+volumeSnapshotClasses:
+  - name: freenas-iscsi-csi
+    parameters:
+    # if true, snapshots will be created with zfs send/receive
+    # detachedSnapshots: "true"
+    secrets:
+      snapshotter-secret:
 
 node:
   hostPID: true
