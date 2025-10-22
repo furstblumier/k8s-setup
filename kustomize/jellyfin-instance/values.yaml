@@ -84,7 +84,7 @@ persistence:
   config:
     type: persistentVolumeClaim
     suffix: config
-    storageClass: freenas-iscsi-csi
+    storageClass: freenas-nfs-csi
     accessMode: ReadWriteOnce
     size: 250Gi
     globalMounts:

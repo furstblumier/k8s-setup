@@ -343,7 +343,7 @@ persistent_volume_claims:
     annotations: {}
     accessModes:
       - ReadWriteOnce
-    storageClass: freenas-iscsi-csi
+    storageClass: freenas-nfs-csi
     selector: {}
 
   # Stores emails
@@ -355,7 +355,7 @@ persistent_volume_claims:
     annotations: {}
     accessModes:
       - ReadWriteOnce
-    storageClass: freenas-iscsi-csi
+    storageClass: freenas-nfs-csi
     selector: {}
 
   # Stores state for Postfix, Dovecot, Fail2Ban, Amavis, PostGrey, ClamAV, SpamAssassin, Rspamd & Redis
@@ -368,7 +368,7 @@ persistent_volume_claims:
     annotations: {}
     accessModes:
       - ReadWriteOnce
-    storageClass: freenas-iscsi-csi
+    storageClass: freenas-nfs-csi
     selector: {}
 
   # Store mail logs
@@ -380,7 +380,7 @@ persistent_volume_claims:
     annotations: {}
     accessModes:
       - ReadWriteOnce
-    storageClass: freenas-iscsi-csi
+    storageClass: freenas-nfs-csi
     selector: {}
 
 persistence:
