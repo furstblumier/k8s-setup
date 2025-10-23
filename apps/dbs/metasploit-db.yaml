@@ -10,11 +10,11 @@ spec:
     size: 1Gi
   managed:
     services:
-      disabledDefaultServices: ["ro", "r"]
+      # disabledDefaultServices: ["ro", "r"]
       additional:
       - selectorType: rw
         serviceTemplate:
           metadata:
-            name: cluster-example-rw-lb
+            name: metasploit-rw-lb
           spec:
             type: LoadBalancer
