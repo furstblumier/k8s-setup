@@ -71,8 +71,11 @@ spec:
             shareAlldirs: false
             shareAllowedHosts: []
             shareAllowedNetworks: []
-            shareMapallUser: "root"
-            shareMapallGroup: "root"
+            shareMaprootUser: root
+            shareMaprootGroup: root
+            shareMapallUser: ""
+            shareMapallGroup: ""
+
   data:
     - secretKey: apitoken
       remoteRef:
