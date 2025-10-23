@@ -16,5 +16,7 @@ spec:
         serviceTemplate:
           metadata:
             name: metasploit-rw-lb
+            annotations:
+              lbipam.cilium.io/ips: 192.168.176.17
           spec:
             type: LoadBalancer
