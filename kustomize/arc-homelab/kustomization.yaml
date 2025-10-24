@@ -3,13 +3,13 @@ kind: Kustomization
 
 namespace: arc-runners
 
-#resources:
-#  - arc-secret.yaml
+resources:
+  - arc-secret.yaml
 
 helmCharts:
 - name: gha-runner-scale-set
   releaseName: gha-runner-scale-set
-  repo: oci://ghcr.io/actions/actions-runner-controller-charts
+  repo: "oci://ghcr.io/actions/actions-runner-controller-charts"
   version: 0.13.0
   includeCRDs: true
   namespace: arc-runners
