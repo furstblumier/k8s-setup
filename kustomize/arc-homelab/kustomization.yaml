@@ -3,8 +3,8 @@ kind: Kustomization
 
 namespace: arc-runners
 
-resources:
-  - arc-secret.yaml
+#resources:
+#  - arc-secret.yaml
 
 helmCharts:
 - name: gha-runner-scale-set
