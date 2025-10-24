@@ -8,7 +8,7 @@ resources:
 
 helmCharts:
 - name: gha-runner-scale-set
-  releaseName: homelab
+  releaseName: gha-runner-scale-set
   repo: oci://ghcr.io/actions/actions-runner-controller-charts
   version: 0.13.0
   includeCRDs: true
