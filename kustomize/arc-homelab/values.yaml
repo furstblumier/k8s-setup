@@ -1,2 +1,4 @@
 githubConfigUrl: https://github.com/furstblumier/k8s-setup
 githubConfigSecret: arc-secret
+
+runnerScaleSetName: "homelab"
