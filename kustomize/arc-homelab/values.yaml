@@ -1,4 +1,6 @@
 githubConfigUrl: "https://github.com/furstblumier/k8s-setup"
 githubConfigSecret: arc-gh-token
-
+controllerServiceAccount:
+  namespace: arc-system
+  name: gha-runner-scale-set-controller-gha-rs-controller
 runnerScaleSetName: "homelab"
