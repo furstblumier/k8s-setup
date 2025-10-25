@@ -6,9 +6,7 @@
   "ignorePaths": [
     "**/archive/**"
   ],
-  {
   "addLabels": ["renovate"]
-  },
   "packageRules": [
     {
       "description": "Automerge non-major updates",
