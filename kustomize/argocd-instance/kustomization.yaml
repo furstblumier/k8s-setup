@@ -6,7 +6,7 @@ namespace: argocd
 helmCharts:
 - name: argo-cd
   repo: https://argoproj.github.io/argo-helm
-  version: 9.0.5
+  version: 9.1.0
   apiVersions:
   - monitoring.coreos.com/v1
   valuesFile: values.yaml
