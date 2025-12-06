@@ -80,6 +80,21 @@ controllers:
         envFrom:
           - secretRef:
               name: gluetun-env
+        
+        probes:
+          liveness: &probes
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /
+                port: 9999
+              initialDelaySeconds: 10
+              periodSeconds: 5
+              timeoutSeconds: 5
+              failureThreshold: 3
+          readiness: *probes
+
         resources:
           limits:
             squat.ai/tun: "1"
@@ -90,7 +105,7 @@ controllers:
             add:
               - NET_ADMIN
           allowPrivilegeEscalation: false
-
+        
 service:
   # Configure a service for the main application
   main:
