@@ -11,7 +11,7 @@ controllers:
       main:
         image:
           repository: docker.io/photoprism/photoprism
-          tag: "250426"
+          tag: "250707"
         resources:
           requests:
             cpu: 100m
