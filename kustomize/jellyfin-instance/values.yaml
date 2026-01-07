@@ -20,20 +20,20 @@ controllers:
           PGID: 1000
           TZ: Europe/Berlin
           DOCKER_MODS: ghcr.io/intro-skipper/intro-skipper-docker-mod
-        probes:
-          liveness: &probes
-            enabled: true
-            custom: true
-            spec:
-              tcpSocket:
-                port: 8096
-              initialDelaySeconds: 300
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-          readiness: *probes
-          startup:
-            enabled: false
+      #  probes:
+      #    liveness: &probes
+      #      enabled: true
+      #      custom: true
+      #      spec:
+      #        tcpSocket:
+      #          port: 8096
+      #        initialDelaySeconds: 300
+      #        periodSeconds: 10
+      #        timeoutSeconds: 1
+      #        failureThreshold: 3
+      #    readiness: *probes
+      #    startup:
+      #      enabled: false
         resources:
           limits:
             gpu.intel.com/i915: 1
