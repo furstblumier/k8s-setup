@@ -19,7 +19,6 @@ controllers:
           PUID: 1000
           PGID: 1000
           TZ: Europe/Berlin
-          JELLYFIN_CACHE_DIR: /cache
       #  probes:
       #    liveness: &probes
       #      enabled: true
@@ -90,14 +89,14 @@ persistence:
     globalMounts:
       - path: /config
 
-  cache:
-    type: persistentVolumeClaim
-    suffix: cache
-    storageClass: freenas-nfs-csi
-    accessMode: ReadWriteOnce
-    size: 250Gi
-    globalMounts:
-      - path: /cache  
+  # cache:
+  #   type: persistentVolumeClaim
+  #   suffix: cache
+  #   storageClass: freenas-nfs-csi
+  #   accessMode: ReadWriteOnce
+  #   size: 250Gi
+  #   globalMounts:
+  #     - path: /cache  
 
   media:
     type: nfs
