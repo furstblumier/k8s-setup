@@ -10,6 +10,6 @@ helmCharts:
 - name: app-template
   releaseName: qbit-instance
   repo: https://bjw-s-labs.github.io/helm-charts
-  version: 4.6.0
+  version: 4.6.2
   valuesFile: values.yaml
   namespace: qbit
