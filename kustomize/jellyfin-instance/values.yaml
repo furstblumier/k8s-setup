@@ -14,7 +14,7 @@ controllers:
       main:
         image:
           repository: lscr.io/linuxserver/jellyfin
-          tag: 10.11.5
+          tag: 10.11.6
         env:
           PUID: 1000
           PGID: 1000
