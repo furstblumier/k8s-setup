@@ -6,7 +6,7 @@ namespace: mariadb-system
 helmCharts:
 - name: mariadb-operator
   repo: "https://helm.mariadb.com/mariadb-operator"
-  version: "25.10.4"
+  version: "25.10.3"
   releaseName: mariadb-operator
   namespace: mariadb-system
   valuesFile: values.yaml
