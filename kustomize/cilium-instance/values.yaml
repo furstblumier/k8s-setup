@@ -24,6 +24,8 @@ k8sServicePort: 7445
 kubeProxyReplacement: true
 l2announcements:
   enabled: true
+secretsNamespaceAnnotations:
+  argocd.argoproj.io/tracking-id: "cilium-instance:/Namespace:/kube-system"
 securityContext:
   capabilities:
     ciliumAgent:
