@@ -3,6 +3,9 @@ cgroup:
     enabled: false
   hostRoot: /sys/fs/cgroup
 ingressController:
+  secretsNamespace:
+    create: true
+    name: "cilium-secrets"
   default: true
   enabled: true
   loadbalancerMode: shared
