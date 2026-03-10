@@ -11,7 +11,7 @@ controllers:
       main:
         image:
           repository: "ghcr.io/home-assistant/home-assistant"
-          tag: stable
+          tag: "2026.3.1"
         env:
           TZ: Europe/Berlin
         probes:
