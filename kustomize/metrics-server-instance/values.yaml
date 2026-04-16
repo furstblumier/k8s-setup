@@ -1,0 +1,8 @@
+apiService:
+  insecureSkipTLSVerify: false
+tls:
+  type: cert-manager
+  helm:
+    lookup: false
+  existingSecret:
+    lookup: false
