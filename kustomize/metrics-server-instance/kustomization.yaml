@@ -8,3 +8,10 @@ helmCharts:
   releaseName: metrics-server
   namespace: kube-system
   valuesFile: values.yaml
+
+patches:
+  - target:
+      kind: APIService
+    patch: |-
+      - op: remove
+        path: /spec/insecureSkipTLSVerify
