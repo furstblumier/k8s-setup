@@ -1,0 +1,5 @@
+enabledControllers:
+  - node-csr-approval
+
+daemonSet:
+  enabled: false
