@@ -76,7 +76,7 @@ deployment:
     # -----------------------------------------------
     # --- General Section ---------------------------
     # -----------------------------------------------
-    LOG_LEVEL: info
+    LOG_LEVEL: debug
     SUPERVISOR_LOGLEVEL:
     DMS_VMAIL_UID:
     DMS_VMAIL_GID: 
