@@ -60,17 +60,17 @@ customDNS:
   #   example.com: printer.lan
   mapping:
     # furst.blue: 192.168.178.100
-    dns.furst.blue: 192.168.176.16
-    sync.furst.blue: 192.168.176.16
-    calendar.furst.blue: 192.168.176.16
-    imap.furst.blue: 192.168.176.16
+    dns.furst.blue: 192.168.208.16
+    sync.furst.blue: 192.168.208.16
+    calendar.furst.blue: 192.168.208.16
+    imap.furst.blue: 192.168.208.16
     mail.furst.blue: 192.168.179.203
-    smtp.furst.blue: 192.168.176.16
-    api.magi.furst.blue: 192.168.176.15
+    smtp.furst.blue: 192.168.208.16
+    api.magi.furst.blue: 192.168.208.15
     fw.furst.blue: 192.168.1.1
-    nas.furst.blue: 192.168.176.34
-    magi.furst.blue: 192.168.176.16
-    kvm.furst.blue: 192.168.176.37
+    nas.furst.blue: 192.168.208.110
+    magi.furst.blue: 192.168.208.16
+    kvm.furst.blue: 192.168.208.52
 
 # optional: definition, which DNS resolver(s) should be used for queries to the domain (with all sub-domains). Multiple resolvers must be separated by a comma
 # Example: Query client.fritz.box will ask DNS server 192.168.178.1. This is necessary for local network, to resolve clients by host name
@@ -83,7 +83,7 @@ conditional:
   # rewrite:
   #   example.com: fritz.box
   mapping:
-    fritz.box: 192.168.176.1
+    fritz.box: 192.168.208.1
     # furst.blue: 192.168.178.100
     # lan.net: 192.168.178.1,192.168.178.2
 
@@ -126,8 +126,8 @@ blocking:
     192.168.178.97:
       - no-blocking
     # samsung s20 mama
-    192.168.178.26:
-      - no-blocking
+    192.168.208.28:
+      - no-blockin
     # Fernseher EG WLAN
     # 192.168.178.38:
     #   - no-blocking
@@ -138,7 +138,7 @@ blocking:
     192.168.178.22:
       - no-blocking
     # s20 papa
-    192.168.178.24:
+    192.168.208.53:
       - no-blocking 
 
   # which response will be sent, if query is blocked:
