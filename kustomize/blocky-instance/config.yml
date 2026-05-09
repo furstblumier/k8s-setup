@@ -64,7 +64,7 @@ customDNS:
     sync.furst.blue: 192.168.208.16
     calendar.furst.blue: 192.168.208.16
     imap.furst.blue: 192.168.208.16
-    mail.furst.blue: 192.168.179.203
+    mail.furst.blue: 192.168.211.201
     smtp.furst.blue: 192.168.208.16
     api.magi.furst.blue: 192.168.208.15
     fw.furst.blue: 192.168.1.1
@@ -213,7 +213,7 @@ caching:
 # optional: configuration of client name resolution
 clientLookup:
   # optional: this DNS resolver will be used to perform reverse DNS lookup (typically local router)
-  upstream: 192.168.176.1
+  upstream: 192.168.208.1
   # optional: some routers return multiple names for client (host name and user defined name). Define which single name should be used.
   # Example: take second name if present, if not take first name
   singleNameOrder:
