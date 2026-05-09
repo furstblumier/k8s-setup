@@ -127,7 +127,7 @@ blocking:
       - no-blocking
     # samsung s20 mama
     192.168.208.28:
-      - no-blockin
+      - no-blocking
     # Fernseher EG WLAN
     # 192.168.178.38:
     #   - no-blocking
