@@ -135,7 +135,7 @@ blocking:
     # 192.168.176.44:
     #   - no-blocking
     # samsung tablet papa
-    192.168.178.22:
+    192.168.208.55:
       - no-blocking
     # s20 papa
     192.168.208.53:
