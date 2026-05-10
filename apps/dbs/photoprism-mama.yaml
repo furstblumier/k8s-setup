@@ -52,4 +52,4 @@ spec:
     - name: "MARIADB_INITDB_SKIP_TZINFO"
       value: "1"
   metrics:
-    enabled: true
+    enabled: false
