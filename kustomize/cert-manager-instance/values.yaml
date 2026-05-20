@@ -4,3 +4,7 @@ global:
 
 crds:
   enabled: true
+
+config:
+  enableGatewayAPI: true
+
