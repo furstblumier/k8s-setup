@@ -4,7 +4,7 @@ metadata:
   name: default-gateway
   namespace: kube-system
   annotations:
-    cert-manager.io/issuer: cf-issuer
+    cert-manager.io/cluster-issuer: cf-issuer
 spec:
   addresses:
     - type: IPAddress
