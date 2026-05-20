@@ -58,3 +58,9 @@ controller:
     image:
       tag: next@sha256:0f308ae601474cb9633f90dc96f59dbd23440b0ed0e77d70e224465246a12dfa
 
+node:
+  driver:
+    image:
+      tag: next@sha256:0f308ae601474cb9633f90dc96f59dbd23440b0ed0e77d70e224465246a12dfa
+
+
