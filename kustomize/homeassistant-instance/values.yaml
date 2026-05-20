@@ -55,7 +55,7 @@ serviceMonitor:
     enabled: false
     # -- Configures the endpoints for the serviceMonitor.
     # @default -- See values.yaml
-serviceName: homeassistant
+    serviceName: homeassistant
     endpoints:
       - port: http
         scheme: http
