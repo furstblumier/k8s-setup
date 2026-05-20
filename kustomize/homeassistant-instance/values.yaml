@@ -97,10 +97,7 @@ route:
         name: default-gateway
         namespace: kube-system
     rules:
-      - matches:
-          path: /
-          pathType: Prefix
-        backendRefs:
+      - backendRefs:
           - identifier: main
             port: 8123
 
