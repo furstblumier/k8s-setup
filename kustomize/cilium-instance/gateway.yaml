@@ -9,6 +9,10 @@ spec:
   addresses:
     - type: IPAddress
       value: 192.168.208.17
+  infrastructure:
+    annotations:
+      lbipam.cilium.io/sharing-key: "default"
+      lbipam.cilium.io/sharing-cross-namespace: "*"
   gatewayClassName: cilium
   listeners:
     - allowedRoutes:
