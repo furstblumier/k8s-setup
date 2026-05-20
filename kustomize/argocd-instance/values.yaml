@@ -35,7 +35,7 @@ server:
     # @default -- `[]` (See [values.yaml])
     parentRefs:
       - name: default-gateway
-      #   namespace: example-gateway-namespace
+        namespace: kube-system
       #   sectionName: https
     # -- List of hostnames for the HTTPRoute
     # @default -- `[]` (See [values.yaml])
