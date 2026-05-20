@@ -60,6 +60,7 @@ customDNS:
   #   example.com: printer.lan
   mapping:
     # furst.blue: 192.168.178.100
+    gw.furst.blue: 192.168.208.17
     dns.furst.blue: 192.168.208.16
     sync.furst.blue: 192.168.208.16
     calendar.furst.blue: 192.168.208.16
