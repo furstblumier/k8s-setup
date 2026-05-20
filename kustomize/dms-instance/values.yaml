@@ -419,7 +419,7 @@ monitoring:
 
 rspamd:
   ingress:
-    enabled: true
+    enabled: false
     ingressClassName: cilium
     annotations:
       cert-manager.io/cluster-issuer: cf-issuer
