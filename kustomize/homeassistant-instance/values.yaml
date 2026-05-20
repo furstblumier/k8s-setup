@@ -55,7 +55,7 @@ serviceMonitor:
     enabled: false
     # -- Configures the endpoints for the serviceMonitor.
     # @default -- See values.yaml
-    serviceName: homeassistant
+serviceName: homeassistant
     endpoints:
       - port: http
         scheme: http
@@ -83,6 +83,26 @@ ingress:
       - hosts:
           - hass.magi.furst.blue
         secretName: homeassistant-tls
+route:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    kind: HTTPRoute
+    hostnames:
+      - "hass.gw.furst.blue"
+    parentRefs:
+      - group: gateway.networking.k8s.io	
+        kind: Gateway
+        name: default-gateway
+        namespace: kube-system
+    rules:
+      - matches:
+          path: /
+          pathType: Prefix
+        backendRefs:
+          - identifier: main
+            port: 8123
 
 persistence:
   config:
