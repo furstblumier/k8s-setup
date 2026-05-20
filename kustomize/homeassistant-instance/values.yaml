@@ -88,7 +88,6 @@ route:
   # @default -- See values.yaml
   main:
     enabled: true
-    # kind: HTTPRoute
     hostnames:
       - "hass.gw.furst.blue"
     parentRefs:
@@ -100,6 +99,10 @@ route:
       - backendRefs:
           - identifier: main
             port: 8123
+        matches:	
+          - path:	
+              type: PathPrefix	
+              value: /
 
 persistence:
   config:
