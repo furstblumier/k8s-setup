@@ -27,5 +27,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: star-gw-furst-blue-tls
+          - group: ''	
+            kind: Secret
+            name: star-gw-furst-blue-tls
 
