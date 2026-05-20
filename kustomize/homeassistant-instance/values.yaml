@@ -96,10 +96,10 @@ route:
         kind: Gateway
         name: default-gateway
         namespace: kube-system
-    rules:
-      - backendRefs:
-          - identifier: main
-            port: 8123
+  #  rules:
+  #    - backendRefs:
+  #        - identifier: main
+  #          port: 8123
 
 persistence:
   config:
