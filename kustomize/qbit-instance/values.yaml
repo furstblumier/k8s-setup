@@ -144,7 +144,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "qbit.gw.furst.blue"
+      - "qbit.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway
@@ -153,7 +153,7 @@ route:
     rules:
       - backendRefs:
           - identifier: main
-            port: 8080
+            port: http
         matches:	
           - path:	
               type: PathPrefix	

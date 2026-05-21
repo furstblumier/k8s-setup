@@ -8,7 +8,7 @@ metadata:
 spec:
   addresses:
     - type: IPAddress
-      value: 192.168.208.17
+      value: 192.168.208.16
   infrastructure:
     annotations:
       lbipam.cilium.io/sharing-key: "default"
@@ -24,7 +24,7 @@ spec:
     - allowedRoutes:
         namespaces:
           from: All
-      hostname: "*.gw.furst.blue"
+      hostname: "*.magi.furst.blue"
       name: https-gw
       port: 443
       protocol: HTTPS
@@ -33,5 +33,31 @@ spec:
         certificateRefs:
           - group: ''	
             kind: Secret
-            name: star-gw-furst-blue-tls
+            name: star-magi-furst-blue-tls
+    - allowedRoutes:
+        namespaces:
+          from: All
+      hostname: "dns.furst.blue"
+      name: https-gw
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ''	
+            kind: Secret
+            name: dns-furst-blue-tls
+    - allowedRoutes:
+        namespaces:
+          from: All
+      hostname: "calendar.furst.blue"
+      name: https-gw
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ''	
+            kind: Secret
+            name: calendar-furst-blue-tls
 

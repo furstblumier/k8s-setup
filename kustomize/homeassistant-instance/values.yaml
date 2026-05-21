@@ -89,7 +89,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "hass.gw.furst.blue"
+      - "hass.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway

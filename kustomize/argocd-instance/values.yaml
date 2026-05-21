@@ -42,7 +42,7 @@ server:
     # -- List of hostnames for the HTTPRoute
     # @default -- `[]` (See [values.yaml])
     hostnames:
-      - "argocd.gw.furst.blue"
+      - "argocd.magi.furst.blue"
 
 repoServer:
   replicas: 2

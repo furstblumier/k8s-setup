@@ -98,7 +98,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "sync.gw.furst.blue"
+      - "sync.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway

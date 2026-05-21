@@ -76,7 +76,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "jellyseer.gw.furst.blue"
+      - "jellyseer.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway

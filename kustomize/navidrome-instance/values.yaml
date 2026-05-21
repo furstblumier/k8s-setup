@@ -87,7 +87,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "music.gw.furst.blue"
+      - "music.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway

@@ -85,7 +85,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "jellyfin.gw.furst.blue"
+      - "jellyfin.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway

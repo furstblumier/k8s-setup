@@ -78,7 +78,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "lidarr.gw.furst.blue"
+      - "lidarr.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway

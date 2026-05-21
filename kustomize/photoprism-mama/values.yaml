@@ -122,7 +122,7 @@ route:
   main:
     enabled: true
     hostnames:
-      - "photos.gw.furst.blue"
+      - "photos.magi.furst.blue"
     parentRefs:
       - group: gateway.networking.k8s.io	
         kind: Gateway
