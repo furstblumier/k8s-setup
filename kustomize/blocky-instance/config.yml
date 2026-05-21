@@ -63,7 +63,7 @@ customDNS:
     gw.furst.blue: 192.168.208.17
     dns.furst.blue: 192.168.208.16
     sync.furst.blue: 192.168.208.16
-    calendar.furst.blue: 192.168.208.16
+    calendar.furst.blue: 192.168.208.17
     imap.furst.blue: 192.168.208.16
     mail.furst.blue: 192.168.211.201
     smtp.furst.blue: 192.168.208.16
