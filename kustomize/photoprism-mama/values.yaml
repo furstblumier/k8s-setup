@@ -93,7 +93,8 @@ serviceMonitor:
       - port: metrics-api
         scheme: http
       - port: metrics-ms
-        scheme: http     
+        scheme: http   
+
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
   # @default -- See values.yaml
@@ -114,6 +115,27 @@ ingress:
       - hosts:
           - photos.magi.furst.blue
         secretName: photos-tls
+
+route:
+  # -- Enable and configure route settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    hostnames:
+      - "photos.gw.furst.blue"
+    parentRefs:
+      - group: gateway.networking.k8s.io	
+        kind: Gateway
+        name: default-gateway
+        namespace: gateway
+    rules:
+      - backendRefs:
+          - identifier: main
+            port: 2342
+        matches:	
+          - path:	
+              type: PathPrefix	
+              value: /
 
 persistence:
   config:

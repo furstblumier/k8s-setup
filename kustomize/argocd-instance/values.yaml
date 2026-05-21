@@ -37,7 +37,7 @@ server:
       - group: gateway.networking.k8s.io	
         kind: Gateway
         name: default-gateway
-        namespace: kube-system
+        namespace: gateway
       #   sectionName: https
     # -- List of hostnames for the HTTPRoute
     # @default -- `[]` (See [values.yaml])
