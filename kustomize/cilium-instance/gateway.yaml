@@ -38,7 +38,7 @@ spec:
         namespaces:
           from: All
       hostname: "dns.furst.blue"
-      name: https-gw
+      name: dns-gw
       port: 443
       protocol: HTTPS
       tls:
@@ -51,7 +51,7 @@ spec:
         namespaces:
           from: All
       hostname: "calendar.furst.blue"
-      name: https-gw
+      name: calendar-gw
       port: 443
       protocol: HTTPS
       tls:
