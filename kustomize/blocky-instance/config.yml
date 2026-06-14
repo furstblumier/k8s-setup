@@ -25,6 +25,12 @@ upstreams:
       # - 2620:fe::9
       # Quad9 - DoT
       - "tcp-tls:9.9.9.9#dns.quad9.net"
+      # Digitalcourage - DoT
+      - "tcp-tls:5.9.164.112#dns3.digitalcourage.de"
+      # Digitale Gesellschaft - DoT
+      - "tcp-tls:dns.digitale-gesellschaft.ch"
+      # UncensoredDNS - DoT
+      - "tcp-tls:anycast.uncensoreddns.org"
 
     # optional: use client name (with wildcard support: * - sequence of any characters, [0-9] - range)
     # or single ip address / client subnet as CIDR notation
