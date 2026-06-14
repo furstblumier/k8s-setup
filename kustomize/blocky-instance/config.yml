@@ -16,7 +16,7 @@ upstreams:
       # - 2606:4700:4700::1111
       # - 2606:4700:4700::1001
       # Cloudflare - DoT
-      - tcp-tls:1.1.1.1#cloudflare-dns.com
+      - "tcp-tls:1.1.1.1#cloudflare-dns.com"
       # Quad9 - ipv4
       # - 9.9.9.9
       # - 149.112.112.112
@@ -24,7 +24,7 @@ upstreams:
       # - 2620:fe::fe
       # - 2620:fe::9
       # Quad9 - DoT
-      - tcp-tls:9.9.9.9#dns.quad9.net
+      - "tcp-tls:9.9.9.9#dns.quad9.net"
 
     # optional: use client name (with wildcard support: * - sequence of any characters, [0-9] - range)
     # or single ip address / client subnet as CIDR notation
