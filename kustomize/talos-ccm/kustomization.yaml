@@ -6,7 +6,7 @@ helmCharts:
   - name: talos-cloud-controller-manager
     releaseName: talos-cloud-controller-manager
     repo: oci://ghcr.io/siderolabs/charts
-    version: 0.5.4
+    version: 0.5.5
     namespace: kube-system
     valuesFile: values.yaml
  
