@@ -10,3 +10,17 @@ helmCharts:
   version: 1.0.5
   valuesFile: values.yaml
   namespace: pingvin
+
+patches:
+- target:
+    group: gateway.networking.k8s.io
+    version: v1
+    kind: HTTPRoute
+    name: pingvin-share-x
+  patch: |-
+    - op: add
+      path: /spec/rules/0/backendRefs/0/group
+      value: ""
+    - op: add
+      path: /spec/rules/0/backendRefs/0/kind
+      value: Service
