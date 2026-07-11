@@ -3,6 +3,10 @@ config:
   inline:
     general:
       appUrl: "https://dl.magi.furst.blue"
+    share:
+      allowRegistration: "false"
+    oauth:
+      allowRegistration: "false"
   useDefault: true
 
 env:
@@ -12,7 +16,7 @@ persistence:
   enabled: true
   storageClass: freenas-nfs-csi
   accessMode: ReadWriteOnce
-  size: 10Gi
+  size: 100Gi
 
 httpRoute:
   enabled: true
