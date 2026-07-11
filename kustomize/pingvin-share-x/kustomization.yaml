@@ -11,6 +11,25 @@ helmCharts:
   valuesFile: values.yaml
   namespace: pingvin
 
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- name: pingvin-logo-assets
+  files:
+    - logo-assets/logo.png
+    - logo-assets/logo-dark.png
+    - logo-assets/favicon.ico
+    - logo-assets/icon-48x48.png
+    - logo-assets/icon-72x72.png
+    - logo-assets/icon-96x96.png
+    - logo-assets/icon-128x128.png
+    - logo-assets/icon-144x144.png
+    - logo-assets/icon-152x152.png
+    - logo-assets/icon-192x192.png
+    - logo-assets/icon-384x384.png
+    - logo-assets/icon-512x512.png
+
 patches:
 - target:
     kind: (ServiceAccount|Secret|Service|PersistentVolumeClaim|Deployment|HTTPRoute|Pod)

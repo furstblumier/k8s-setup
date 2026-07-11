@@ -2,6 +2,7 @@ config:
   enabled: true
   inline:
     general:
+      appName: "Pubby Share"
       appUrl: "https://dl.furst.blue"
     share:
       allowRegistration: "false"
@@ -32,3 +33,54 @@ httpRoute:
         - path:
             type: PathPrefix
             value: /
+
+volumes:
+  - name: logo-assets
+    configMap:
+      name: pingvin-logo-assets
+      items:
+        - key: logo.png
+          path: logo.png
+        - key: logo-dark.png
+          path: logo-dark.png
+        - key: favicon.ico
+          path: favicon.ico
+  - name: icon-assets
+    configMap:
+      name: pingvin-logo-assets
+      items:
+        - key: icon-48x48.png
+          path: icon-48x48.png
+        - key: icon-72x72.png
+          path: icon-72x72.png
+        - key: icon-96x96.png
+          path: icon-96x96.png
+        - key: icon-128x128.png
+          path: icon-128x128.png
+        - key: icon-144x144.png
+          path: icon-144x144.png
+        - key: icon-152x152.png
+          path: icon-152x152.png
+        - key: icon-192x192.png
+          path: icon-192x192.png
+        - key: icon-384x384.png
+          path: icon-384x384.png
+        - key: icon-512x512.png
+          path: icon-512x512.png
+
+volumeMounts:
+  - name: logo-assets
+    mountPath: /opt/app/frontend/public/img/logo.png
+    subPath: logo.png
+    readOnly: true
+  - name: logo-assets
+    mountPath: /opt/app/frontend/public/img/logo-dark.png
+    subPath: logo-dark.png
+    readOnly: true
+  - name: logo-assets
+    mountPath: /opt/app/frontend/public/img/favicon.ico
+    subPath: favicon.ico
+    readOnly: true
+  - name: icon-assets
+    mountPath: /opt/app/frontend/public/img/icons
+    readOnly: true
