@@ -13,3 +13,11 @@ helmCharts:
   releaseName: dms-instance
   valuesFile: values.yaml
   namespace: mail
+
+patches:
+- target:
+    kind: (ConfigMap|ServiceAccount|Deployment|Service|PersistentVolumeClaim)
+  patch: |-
+    - op: add
+      path: /metadata/namespace
+      value: mail
