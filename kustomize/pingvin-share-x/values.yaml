@@ -8,6 +8,8 @@ config:
     share:
       allowRegistration: "false"
       allowAdminAccessAllShares: "true"
+      shareIdLength: "16"
+      defaultExpiration: "1 day"
     oauth:
       allowRegistration: "false"
   useDefault: true
