@@ -4,6 +4,7 @@ config:
     general:
       appName: "Pubby Share"
       appUrl: "https://dl.furst.blue"
+      showHomePage: "false"
     share:
       allowRegistration: "false"
     oauth:
