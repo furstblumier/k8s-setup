@@ -20,6 +20,7 @@ configMapGenerator:
     - logo-assets/logo.png
     - logo-assets/logo-dark.png
     - logo-assets/favicon.ico
+    - logo-assets/manifest.json
     - logo-assets/icon-48x48.png
     - logo-assets/icon-72x72.png
     - logo-assets/icon-96x96.png

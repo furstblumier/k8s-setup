@@ -50,6 +50,8 @@ volumes:
           path: logo-dark.png
         - key: favicon.ico
           path: favicon.ico
+        - key: manifest.json
+          path: manifest.json
   - name: icon-assets
     configMap:
       name: pingvin-logo-assets
@@ -85,6 +87,10 @@ volumeMounts:
   - name: logo-assets
     mountPath: /opt/app/frontend/public/img/favicon.ico
     subPath: favicon.ico
+    readOnly: true
+  - name: logo-assets
+    mountPath: /opt/app/frontend/public/manifest.json
+    subPath: manifest.json
     readOnly: true
   - name: icon-assets
     mountPath: /opt/app/frontend/public/img/icons
