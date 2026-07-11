@@ -7,6 +7,7 @@ config:
       showHomePage: "false"
     share:
       allowRegistration: "false"
+      allowAdminAccessAllShares: "true"
     oauth:
       allowRegistration: "false"
   useDefault: true
