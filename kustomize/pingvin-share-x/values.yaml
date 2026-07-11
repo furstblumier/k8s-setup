@@ -1,0 +1,30 @@
+config:
+  enabled: true
+  inline:
+    general:
+      appUrl: "https://dl.magi.furst.blue"
+  useDefault: true
+
+env:
+  TRUST_PROXY: "true"
+
+persistence:
+  enabled: true
+  storageClass: freenas-nfs-csi
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: default-gateway
+      namespace: gateway
+  hostnames:
+    - dl.magi.furst.blue
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
