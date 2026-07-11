@@ -3,3 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: pingvin
+  labels:
+    gateway-access: pingvin

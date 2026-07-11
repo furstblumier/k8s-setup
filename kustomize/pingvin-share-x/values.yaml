@@ -2,7 +2,7 @@ config:
   enabled: true
   inline:
     general:
-      appUrl: "https://dl.magi.furst.blue"
+      appUrl: "https://dl.furst.blue"
     share:
       allowRegistration: "false"
     oauth:
@@ -23,10 +23,10 @@ httpRoute:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: default-gateway
+      name: external
       namespace: gateway
   hostnames:
-    - dl.magi.furst.blue
+    - dl.furst.blue
   rules:
     - matches:
         - path:

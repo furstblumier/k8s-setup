@@ -1,0 +1,43 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: external
+  namespace: gateway
+  annotations:
+    cert-manager.io/cluster-issuer: cf-issuer
+spec:
+  addresses:
+    - type: IPAddress
+      value: 192.168.208.18
+  infrastructure:
+    annotations:
+      lbipam.cilium.io/sharing-key: "default"
+      lbipam.cilium.io/sharing-cross-namespace: "*"
+  gatewayClassName: cilium
+  listeners:
+    - allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              gateway-access: pingvin
+      hostname: "dl.furst.blue"
+      name: http-pingvin
+      port: 80
+      protocol: HTTP
+    - allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              gateway-access: pingvin
+      hostname: "dl.furst.blue"
+      name: https-pingvin
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ''
+            kind: Secret
+            name: dl-furst-blue-tls

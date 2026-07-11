@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - gateway.yaml
+  - external-gateway.yaml
   - pool.yaml
   - l2policy.yaml
 
