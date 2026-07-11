@@ -10,6 +10,7 @@ config:
       allowAdminAccessAllShares: "true"
       shareIdLength: "16"
       defaultExpiration: "1 day"
+      maxSize: "10"
     oauth:
       allowRegistration: "false"
   useDefault: true
