@@ -13,6 +13,13 @@ config:
       maxSize: "10000000000"
     oauth:
       allowRegistration: "false"
+    smtp:
+      enabled: "true"
+      host: "smtp.furst.blue"
+      port: "25"
+      email: "noreply@furst.blue"
+      username: ""
+      password: ""
   useDefault: true
 
 env:
