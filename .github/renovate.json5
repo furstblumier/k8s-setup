@@ -12,6 +12,11 @@
       "description": "Automerge non-major updates",
       "matchUpdateTypes": ["patch"],
       "automerge": true
+    },
+    {
+      "description": "Ignore malformed Lidarr tag for the historical 0.8.1.2135 release",
+      "matchPackageNames": ["lscr.io/linuxserver/lidarr"],
+      "allowedVersions": "!/^(8\\.1\\.2135)$/"
     }
   ],
 }
